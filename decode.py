@@ -19,6 +19,7 @@ class Decoder:
     def __init__(self):
         spec_dir = os.path.join(os.path.split(__file__)[0], 'spec')
         self._aivdm = load_specs([os.path.join(spec_dir, 'aivdm.xml')])
+        self._ais = load_specs([os.path.join(spec_dir, 'ais.xml')])
 
     def decode(self, data):
         # Encode aivdm data back into binary
@@ -28,8 +29,12 @@ class Decoder:
             filename, line_number, column_number = self._aivdm[2][ex.entry]
             sys.exit('%s[%i] - %s' %  (filename, line_number, ex))
 
-        # TODO: Decode the ais binary
-        print bits
+        # Decode the ais binary
+        try:
+            to_file(self._ais[0].decode(bits), sys.stdout)
+        except DecodeError, ex:
+            filename, line_number, column_number = self._ais[2][ex.entry]
+            sys.exit('%s[%i] - %s' %  (filename, line_number, ex))
 
 def main(args):
     try:

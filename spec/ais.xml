@@ -1,0 +1,11 @@
+<protocol>
+    <choice name="packet">
+        <reference name="unknown packet" />
+    </choice> 
+
+    <common>
+        <sequence name="unknown packet">
+            <field name="type" length="6" type="integer" />
+        </sequence>
+    </common>
+</protocol>
