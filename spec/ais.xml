@@ -6,7 +6,7 @@
 
     <common>
         <sequence name="position reports" length="168" >
-            <field length="6" type="integer" min="1" max="3" />
+            <field name="type:" length="6" type="integer" min="1" max="3" />
             <field name="repeat indicator" length="2" type="integer" />
             <field name="userid" length="30" type="integer" />
             <choice name="navigational status">
@@ -73,7 +73,51 @@
                 <field name="RAIM not in use" length="1" value="0x0" />
                 <field name="RAIM in use" length="1" value="0x1" />
             </choice>
-            <field name="communication state" length="19" />
+            <choice name="sync state">
+                <field name="utc direct" length="2" value="0x0" />
+                <field name="utc indirect" length="2" value="0x1" />
+                <field name="station synced to a base station" length="2" value="0x2" />
+                <field name="station synced to another station" length="2" value="0x2" />
+            </choice>
+            <choice name="communication state">
+                <sequence name="sotdma">
+                    <sequence value="${type:}" min="1" max="2" />
+                    <field name="slot time out" length="3" type="integer" />
+                    <choice name="sub message">
+                        <sequence name="received stations" value="${value:}" >
+                            <choice>
+                                <sequence value="${slot time out}" expected="3" />
+                                <sequence value="${slot time out}" expected="5" />
+                                <sequence value="${slot time out}" expected="7" />
+                            </choice>
+                            <field name="value:" length="14" type="integer" />
+                        </sequence>
+                        <sequence name="slot number used for transmission" value="${value:}" >
+                            <choice>
+                                <sequence value="${slot time out}" expected="2" />
+                                <sequence value="${slot time out}" expected="4" />
+                                <sequence value="${slot time out}" expected="6" />
+                            </choice>
+                            <field name="value:" length="14" type="integer" max="2249" />
+                        </sequence>
+                        <sequence name="UTC hour and minute">
+                            <sequence value="${slot time out}" expected="1" />
+                            <field name="hour" length="5" type="integer" max="23" />
+                            <field name="minute" length="7" type="integer" max="59" />
+                            <field length="2" />
+                        </sequence>
+                    </choice>
+                </sequence>
+                <sequence name="itdma">
+                    <sequence value="${type:}" expected="3" />
+                    <choice name="slot increment">
+                        <field name="no more transmissions" length="13" value="0x0" />
+                        <field name="offset to next slot" length="13" type="integer" />
+                    </choice>
+                    <field name="number of slots" length="3" type="integer" />
+                    <field name="keep slot allocated" length="1" type="integer" />
+                </sequence>
+            </choice>
         </sequence>
 
         <sequence name="unknown packet">

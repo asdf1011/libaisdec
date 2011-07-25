@@ -13,5 +13,9 @@
     <not-available></not-available>
     <spare>000</spare>
     <RAIM-not-in-use></RAIM-not-in-use>
-    <communication-state>001 10001000 10111001</communication-state>
+    <utc-direct></utc-direct>
+    <sotdma>
+        <slot-time-out>6</slot-time-out>
+        <slot-number-used-for-transmission>2233</slot-number-used-for-transmission>
+    </sotdma>
 </position-reports>
