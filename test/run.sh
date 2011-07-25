@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+set -u
+
+cd `dirname $0`
+
+for name in data/packet*.aivdm; do
+    if ! diff -u data/`basename $name .aivdm`.xml <( ../decode.py $name ); then
+        echo "Tests failed, differences found in $name!"
+        exit 1
+    fi
+done
+echo All tests passed.
