@@ -1,9 +1,81 @@
 <protocol>
     <choice name="packet">
+        <reference name="position reports" />
         <reference name="unknown packet" />
     </choice> 
 
     <common>
+        <sequence name="position reports" length="168" >
+            <field length="6" type="integer" min="1" max="3" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <field name="userid" length="30" type="integer" />
+            <choice name="navigational status">
+                <field name="under way using engine" length="4" type="integer" value="0" />
+                <field name="at anchor" length="4" type="integer" value="1" />
+                <field name="not under command" length="4" type="integer" value="2" />
+                <field name="restricted manouverability" length="4" type="integer" value="3" />
+                <field name="constrained by her draught" length="4" type="integer" value="4" />
+                <field name="moored" length="4" type="integer" value="5" />
+                <field name="aground" length="4" type="integer" value="6" />
+                <field name="engaged in fishing" length="4" type="integer" value="7" />
+                <field name="under way sailing" length="4" type="integer" value="8" />
+                <field name="reserved 9" length="4" type="integer" value="9" />
+                <field name="reserved 10" length="4" type="integer" value="10" />
+                <field name="reserved for future use" length="4" type="integer" min="11" max="13" />
+                <field name="AIS-SART" length="4" type="integer" value="14" />
+                <field name="undefined" length="4" type="integer" value="15" />
+            </choice>
+            <choice name="rate of turn">
+                <field name="turning right at more than 5 degrees per 30s" length="8" type="signed integer" value="127" />
+                <field name="turning left at more than 5 degrees per 30s" length="8" type="signed integer" value="0-127" />
+                <field name="no turn information available" length="8" type="signed integer" value="0-128" />
+                <field name="rot ais" length="8" type="signed integer" />
+            </choice>
+            <choice name="speed over ground">
+                <field name="not available" length="10" type="integer" value="1023" />
+                <field name="102.2 or higher" length="10" type="integer" value="1022" />
+                <field name="speed over ground in 1/10 knot" length="10" type="integer" />
+            </choice>
+            <choice name="position accuracy">
+                <field name="high accuracy" length="1" value="0x1" />
+                <field name="low accuracy" length="1" value="0x0" />
+            </choice>
+            <choice name="longitude">
+                <field name="not available" length="28" value="0x6791ac0" />
+                <field name="longitude in 1/10000 minute" length="28" type="signed integer" />
+            </choice>
+            <choice name="latitude">
+                <field name="not available" length="27" value="0x3412140" />
+                <field name="latitude in 1/10000 minute" length="27" type="signed integer" />
+            </choice>
+            <choice name="course over ground">
+                <field name="not available" length="12" type="integer" value="3600" />
+                <field name="course over ground" length="12" type="integer" max="3599" />
+            </choice>
+            <choice name="true heading">
+                <field name="not available" length="9" type="integer" value="511" />
+                <field name="true heading" length="9" type="integer" max="359" />
+            </choice>
+            <choice name="timestamp">
+                <field name="not available" length="6" type="integer" value="60" />
+                <field name="electronic position fixing system in manual input mode" length="6" type="integer" value="61" />
+                <field name="electronic position fixing system in estimated mode" length="6" type="integer" value="62" />
+                <field name="positioning system inoperative" length="6" type="integer" value="63" />
+                <field name="electronic position system UTC second" length="6" type="integer" />
+            </choice>
+            <choice name="special maneuver indicator">
+                <field name="not available" length="2" value="0x0" />
+                <field name="not engaged in special maneuver" length="2" value="0x1" />
+                <field name="engaged in special maneuver" length="2" value="0x2" />
+            </choice>
+            <field name="spare" length="3" />
+            <choice name="RAIM">
+                <field name="RAIM not in use" length="1" value="0x0" />
+                <field name="RAIM in use" length="1" value="0x1" />
+            </choice>
+            <field name="communication state" length="19" />
+        </sequence>
+
         <sequence name="unknown packet">
             <field name="type" length="6" type="integer" />
         </sequence>

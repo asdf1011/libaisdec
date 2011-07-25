@@ -1,0 +1,17 @@
+<position-reports>
+    <repeat-indicator>0</repeat-indicator>
+    <userid>366888040</userid>
+    <under-way-using-engine></under-way-using-engine>
+    <no-turn-information-available></no-turn-information-available>
+    <speed-over-ground-in-1_10-knot>1</speed-over-ground-in-1_10-knot>
+    <low-accuracy></low-accuracy>
+    <longitude-in-1_10000-minute>-87774230</longitude-in-1_10000-minute>
+    <latitude-in-1_10000-minute>36668480</latitude-in-1_10000-minute>
+    <course-over-ground>1810</course-over-ground>
+    <not-available></not-available>
+    <electronic-position-system-UTC-second>0</electronic-position-system-UTC-second>
+    <not-available></not-available>
+    <spare>000</spare>
+    <RAIM-not-in-use></RAIM-not-in-use>
+    <communication-state>001 10001000 10111001</communication-state>
+</position-reports>
