@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from bdec import DecodeError
-from bdec.spec import load_specs
+from bdec.spec import load_specs, LoadError
 from bdec.output.instance import encode
 from bdec.output.xmlout import to_file
 import getopt
@@ -19,8 +19,12 @@ def usage(program):
 class Decoder:
     def __init__(self):
         spec_dir = os.path.join(os.path.split(__file__)[0], 'spec')
-        self._aivdm = load_specs([os.path.join(spec_dir, 'aivdm.xml')])
-        self._ais = load_specs(glob(os.path.join(spec_dir, 'ais*.xml')))
+
+        try:
+            self._aivdm = load_specs([os.path.join(spec_dir, 'aivdm.xml')])
+            self._ais = load_specs(glob(os.path.join(spec_dir, 'ais*.xml')))
+        except LoadError, ex:
+            sys.exit(ex)
 
     def decode(self, data):
         # Encode aivdm data back into binary
