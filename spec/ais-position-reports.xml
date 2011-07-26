@@ -63,7 +63,7 @@
                 <field name="not engaged in special maneuver" length="2" value="0x1" />
                 <field name="engaged in special maneuver" length="2" value="0x2" />
             </choice>
-            <field name="spare" length="3" />
+            <field name="spare:" length="3" />
             <choice name="RAIM">
                 <field name="RAIM not in use" length="1" value="0x0" />
                 <field name="RAIM in use" length="1" value="0x1" />

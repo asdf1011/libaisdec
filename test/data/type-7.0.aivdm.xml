@@ -1,0 +1,21 @@
+<acknowledge>
+    <binary-acknowledge></binary-acknowledge>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>366954160</source-id>
+    <destination-1>
+        <destination-id>134290840</destination-id>
+        <sequence-number>0</sequence-number>
+    </destination-1>
+    <destination>
+        <destination-id>260236771</destination-id>
+        <sequence-number>1</sequence-number>
+    </destination>
+    <destination>
+        <destination-id>203581311</destination-id>
+        <sequence-number>3</sequence-number>
+    </destination>
+    <destination>
+        <destination-id>713043985</destination-id>
+        <sequence-number>0</sequence-number>
+    </destination>
+</acknowledge>

@@ -1,0 +1,27 @@
+<protocol>
+    <common>
+        <sequence name="destination info">
+            <reference name="destination id" type="mmsi" />
+            <field name="sequence number" length="2" type="integer" />
+        </sequence>
+
+        <choice name="optional destination">
+            <reference name="destination" type="destination info" />
+            <sequence name="no present:" />
+        </choice>
+
+        <sequence name="acknowledge">
+            <choice name="type">
+                <field name="binary acknowledge" length="6" type="integer" value="7" />
+                <field name="safety related acknowledge" length="6" type="integer" value="13" />
+            </choice>
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="spare:" length="2" />
+            <reference name="destination 1" type="destination info" />
+            <reference name="destination 2" type="optional destination" />
+            <reference name="destination 3" type="optional destination" />
+            <reference name="destination 4" type="optional destination" />
+        </sequence>
+    </common>
+</protocol>
