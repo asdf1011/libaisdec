@@ -1,0 +1,28 @@
+<station-report>
+    <UTC-and-date-response></UTC-and-date-response>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>316001807</user-id>
+    <timestamp>
+        <date>
+            <year>2010</year>
+            <month>5</month>
+            <day>13</day>
+        </date>
+        <time>
+            <hour>0</hour>
+            <minute>2</minute>
+            <second>10</second>
+        </time>
+    </timestamp>
+    <less-than-10m></less-than-10m>
+    <longitude-1-_-10000-minute>218562089</longitude-1-_-10000-minute>
+    <latitude-1-_-10000-minute>25283363</latitude-1-_-10000-minute>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <stop-transmission></stop-transmission>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <utc-direct></utc-direct>
+        <slot-time-out>0</slot-time-out>
+        <de-allocated-after-transmission></de-allocated-after-transmission>
+    </sotdma>
+</station-report>

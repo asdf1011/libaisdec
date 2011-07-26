@@ -1,0 +1,52 @@
+<protocol>
+    <common>
+        <sequence name="station report" length="168">
+            <choice name="message type">
+                <field name="base station report" length="6" type="integer" value="4" />
+                <field name="UTC and date response" length="6" type="integer" value="11" />
+            </choice>
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <sequence name="timestamp">
+                <sequence name="date">
+                    <field name="year" length="14" type="integer" />
+                    <field name="month" length="4" type="integer" />
+                    <field name="day" length="5" type="integer" />
+                </sequence>
+                <sequence name="time">
+                    <field name="hour" length="5" type="integer" />
+                    <field name="minute" length="6" type="integer" />
+                    <field name="second" length="6" type="integer" />
+                </sequence>
+            </sequence>
+            <choice name="position accuracy">
+                <field name="less than 10m" length="1" value="1" />
+                <field name="over 10m" length="1" value="0" />
+            </choice>
+            <field name="longitude 1 / 10000 minute" length="28" type="integer" />
+            <field name="latitude 1 / 10000 minute" length="27" type="integer" />
+            <choice name="type of electronic position fixing">
+                <field name="undefined" length="4" type="integer" value="0" />
+                <field name="global positioning system (GPS)" length="4" type="integer" value="1" />
+                <field name="GNSS (GLONASS)" length="4" type="integer" value="2" />
+                <field name="combined GPS/GLONASS" length="4" type="integer" value="3" />
+                <field name="Loran-C" length="4" type="integer" value="4" />
+                <field name="Chayka" length="4" type="integer" value="5" />
+                <field name="integrated navigation system " length="4" type="integer" value="6" />
+                <field name="surveyed" length="4" type="integer" value="7" />
+                <field name="Galileo" length="4" type="integer" value="8" />
+                <field name="internal GNSS" length="4" type="integer" value="15" />
+            </choice>
+            <choice name="transmission control for long range broadcast message">
+                <field name="stop transmission" length="1" value="0" />
+                <field name="request transmission" length="1" value="1" />
+            </choice>
+            <field name="spare:" length="9" />
+            <choice name="raim">
+                <field name="raim not in use" length="1" value="0" />
+                <field name="raim in use" length="1" value="1" />
+            </choice>
+            <reference name="sotdma" />
+        </sequence>
+    </common>
+</protocol>

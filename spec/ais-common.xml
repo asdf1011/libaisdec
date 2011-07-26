@@ -1,5 +1,51 @@
 <protocol>
     <common>
         <field name="mmsi" length="30" type="integer" />
+
+        <choice name="sync state">
+            <field name="utc direct" length="2" value="0x0" />
+            <field name="utc indirect" length="2" value="0x1" />
+            <field name="station synced to a base station" length="2" value="0x2" />
+            <field name="station synced to another station" length="2" value="0x3" />
+        </choice>
+
+        <sequence name="sotdma" length="19">
+            <reference name="sync state" />
+            <field name="slot time out" length="3" type="integer" />
+            <choice name="sub message">
+                <sequence name="received stations" value="${value:}" >
+                    <choice>
+                        <sequence value="${slot time out}" expected="3" />
+                        <sequence value="${slot time out}" expected="5" />
+                        <sequence value="${slot time out}" expected="7" />
+                    </choice>
+                    <field name="value:" length="14" type="integer" />
+                </sequence>
+                <sequence name="slot number used for transmission" value="${value:}" >
+                    <choice>
+                        <sequence value="${slot time out}" expected="2" />
+                        <sequence value="${slot time out}" expected="4" />
+                        <sequence value="${slot time out}" expected="6" />
+                    </choice>
+                    <field name="value:" length="14" type="integer" max="2249" />
+                </sequence>
+                <sequence name="UTC hour and minute">
+                    <sequence value="${slot time out}" expected="1" />
+                    <field name="hour" length="5" type="integer" max="23" />
+                    <field name="minute" length="7" type="integer" max="59" />
+                    <field length="2" />
+                </sequence>
+                <choice name="slot offset">
+                    <sequence name="de-allocated after transmission">
+                        <sequence value="${slot time out}" expected="0" />
+                        <field length="14" type="integer" value="0" />
+                    </sequence>
+                    <sequence name="next frame slot offset" value="${value:}">
+                        <sequence value="${slot time out}" expected="0" />
+                        <field name="value:" length="14" type="integer" />
+                    </sequence>
+                </choice>
+            </choice>
+        </sequence>
     </common>
 </protocol>

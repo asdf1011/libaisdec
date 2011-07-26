@@ -12,9 +12,11 @@
     <electronic-position-system-UTC-second>0</electronic-position-system-UTC-second>
     <not-available></not-available>
     <RAIM-not-in-use></RAIM-not-in-use>
-    <utc-direct></utc-direct>
     <sotdma>
-        <slot-time-out>6</slot-time-out>
-        <slot-number-used-for-transmission>2233</slot-number-used-for-transmission>
+        <value>
+            <utc-direct></utc-direct>
+            <slot-time-out>6</slot-time-out>
+            <slot-number-used-for-transmission>2233</slot-number-used-for-transmission>
+        </value>
     </sotdma>
 </position-reports>
