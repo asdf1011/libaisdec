@@ -1,0 +1,5 @@
+<protocol>
+    <common>
+        <field name="mmsi" length="30" type="integer" />
+    </common>
+</protocol>

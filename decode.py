@@ -24,7 +24,7 @@ class Decoder:
             self._aivdm = load_specs([os.path.join(spec_dir, 'aivdm.xml')])
             self._ais = load_specs(glob(os.path.join(spec_dir, 'ais*.xml')))
         except LoadError, ex:
-            sys.exit(ex)
+            sys.exit(str(ex))
 
     def decode(self, data):
         # Encode aivdm data back into binary
