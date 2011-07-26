@@ -5,6 +5,7 @@ from bdec.spec import load_specs
 from bdec.output.instance import encode
 from bdec.output.xmlout import to_file
 import getopt
+from glob import glob
 import os.path
 import sys
 
@@ -19,7 +20,7 @@ class Decoder:
     def __init__(self):
         spec_dir = os.path.join(os.path.split(__file__)[0], 'spec')
         self._aivdm = load_specs([os.path.join(spec_dir, 'aivdm.xml')])
-        self._ais = load_specs([os.path.join(spec_dir, 'ais.xml')])
+        self._ais = load_specs(glob(os.path.join(spec_dir, 'ais*.xml')))
 
     def decode(self, data):
         # Encode aivdm data back into binary
