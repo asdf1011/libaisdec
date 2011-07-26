@@ -1,0 +1,12 @@
+<protocol>
+    <common>
+        <sequence name="utc and date inquiry" length="72">
+            <field length="6" type="integer" value="10" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="spare:" length="2" />
+            <reference name="destination id" type="mmsi" />
+            <field name="spare:" length="2" />
+        </sequence>
+    </common>
+</protocol>

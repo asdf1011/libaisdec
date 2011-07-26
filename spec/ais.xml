@@ -3,6 +3,7 @@
         <reference name="position reports" />
         <reference name="acknowledge" />
         <reference name="binary broadcast message" />
+        <reference name="utc and date inquiry" />
         <reference name="unknown packet" />
     </choice> 
 
