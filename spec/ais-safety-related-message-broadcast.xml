@@ -1,0 +1,11 @@
+<protocol>
+    <common>
+        <sequence name="safety related message broadcast">
+            <field length="6" type="integer" value="14" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="spare:" length="2" />
+            <reference name="safety related text" type="6 bit ascii" />
+        </sequence>
+    </common>
+</protocol>

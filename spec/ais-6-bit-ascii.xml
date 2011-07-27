@@ -5,13 +5,35 @@
                  in the option of the decode, only it's value. If we embedded
                  the choice directly, in the C code (for exaple) each character
                  would be represented by an enumeration and a union. -->
-            <sequence name="character" value="${character:}">
-                <choice name="character:">
-                    <sequence name="capitals" value="${value:} + 64">
-                        <field name="value:" length="6" type="integer" min="0" max="31" />
-                    </sequence>
-                    <field name="punctuation" length="6" min="32" max="63" />
-                </choice>
+            <sequence name="character" value="${entry:.character:}">
+                <sequence name="entry:">
+                    <choice name="character:">
+                        <sequence name="capitals" value="${value:} + 64">
+                            <field name="value:" length="6" type="integer" min="0" max="31" />
+                        </sequence>
+                        <field name="punctuation" length="6" min="32" max="63" />
+                    </choice>
+
+                    <!-- The sequenceof will keep decoding until it runs out
+                         of data. However, the source data we are decoding is
+                         a multiple of bytes; we want to therefor ignore any
+                         remaining bits less than six bits in length. -->
+                    <choice>
+                        <sequence>
+                            <choice name="try to decode six bits:">
+                                <field length="6" />
+                                <sequence />
+                            </choice>
+                            <sequence name="assert:" value="len{try to decode six bits:}" expected="0" />
+                            <!-- We were unable to decode 6 bits, therefore we
+                                 should drop out of the sequenceof. -->
+                            <end-sequenceof />
+                        </sequence>
+                        <!-- If this option decodes, we have at least 6 bits
+                             still to go. -->
+                        <sequence />
+                    </choice>
+                </sequence>
             </sequence>
         </sequenceof>
     </common>
