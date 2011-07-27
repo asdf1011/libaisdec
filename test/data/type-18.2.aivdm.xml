@@ -1,0 +1,28 @@
+<standard-class-b-equipment-position-report>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>366943250</user-id>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>1</speed-over-ground-in-1_10-knot>
+        <position>
+            <over-10m></over-10m>
+            <longitude-in-1_10000-minute>-52826030</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>18424970</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>378</course-over-ground>
+        <true-heading>123</true-heading>
+        <electronic-position-system-UTC-second>6</electronic-position-system-UTC-second>
+    </position-report>
+    <class-b-sotdma-unit></class-b-sotdma-unit>
+    <no-display-available></no-display-available>
+    <not-equipped-with-dsc-function></not-equipped-with-dsc-function>
+    <no-frequency-management-via-message-22></no-frequency-management-via-message-22>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <sotdma>
+            <station-synced-to-a-base-station></station-synced-to-a-base-station>
+            <slot-time-out>0</slot-time-out>
+            <next-frame-slot-offset>7</next-frame-slot-offset>
+        </sotdma>
+    </sotdma>
+</standard-class-b-equipment-position-report>
