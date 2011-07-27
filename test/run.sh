@@ -5,10 +5,15 @@ set -u
 
 cd `dirname $0`
 
+NUM_TESTS=0
 for name in data/*.aivdm; do
+    NUM_TESTS=$((NUM_TESTS + 1))
+    echo -n .
     if ! diff -u $name.xml <( ../decode.py $name ); then
-        echo "Tests failed, differences found in $name!"
+        echo
+        echo "Test failed, differences found in $name!"
         exit 1
     fi
 done
-echo All tests passed.
+echo
+echo All $NUM_TESTS tests passed.
