@@ -1,0 +1,34 @@
+<protocol>
+    <common>
+        <sequence name="interrogation message">
+            <field name="message id" type="integer" length="6" />
+            <field name="response slot offset" type="integer" length="12" />
+        </sequence>
+
+        <sequence name="interrogation destination">
+            <field name="spare:" length="2" />
+            <reference name="destination id" type="mmsi" />
+            <reference name="message 1" type="interrogation message" />
+        </sequence>
+
+        <sequence name="interrogation">
+            <field length="6" type="integer" value="15" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <reference name="destination 1" type="interrogation message" />
+            <!-- The first destination can have an optional second message -->
+            <choice name="optional message 2">
+                <sequence name="message 2">
+                    <field name="spare:" length="2" />
+                    <reference name="message" type="interrogation message" />
+                </sequence>
+                <sequence name="not present" />
+            </choice>
+            <!-- If we still have data, it's another destionation. -->
+            <choice name="optional destination 2">
+                <reference name="destionaton 2" type="interrogation message" />
+                <sequence name="not present" />
+            </choice>
+        </sequence>
+    </common>
+</protocol>

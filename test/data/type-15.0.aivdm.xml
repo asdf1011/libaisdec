@@ -1,0 +1,15 @@
+<interrogation>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>368578000</source-id>
+    <destination-1>
+        <message-id>0</message-id>
+        <response-slot-offset>0</response-slot-offset>
+    </destination-1>
+    <message-2>
+        <message>
+            <message-id>16</message-id>
+            <response-slot-offset>2437</response-slot-offset>
+        </message>
+    </message-2>
+    <not-present></not-present>
+</interrogation>

@@ -7,6 +7,7 @@
         <reference name="utc and date inquiry" />
         <reference name="addressed safety related message" />
         <reference name="safety related message broadcast" />
+        <reference name="interrogation" />
         <reference name="unknown packet" />
     </choice> 
 
