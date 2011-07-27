@@ -5,6 +5,7 @@
         <reference name="acknowledge" />
         <reference name="binary broadcast message" />
         <reference name="utc and date inquiry" />
+        <reference name="addressed safety related message" />
         <reference name="unknown packet" />
     </choice> 
 

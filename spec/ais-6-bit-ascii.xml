@@ -1,0 +1,18 @@
+<protocol>
+    <common>
+        <sequenceof name="6 bit ascii">
+            <!-- We embed the choice under a sequence, as we aren't interested
+                 in the option of the decode, only it's value. If we embedded
+                 the choice directly, in the C code (for exaple) each character
+                 would be represented by an enumeration and a union. -->
+            <sequence name="character" value="${character:}">
+                <choice name="character:">
+                    <sequence name="capitals" value="${value:} + 64">
+                        <field name="value:" length="6" type="integer" min="0" max="31" />
+                    </sequence>
+                    <field name="punctuation" length="6" min="32" max="63" />
+                </choice>
+            </sequence>
+        </sequenceof>
+    </common>
+</protocol>

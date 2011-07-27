@@ -1,0 +1,17 @@
+<protocol>
+    <common>
+        <sequence name="addressed safety related message">
+            <field name="type:" length="6" type="integer" value="12" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="sequence number" length="2" type="integer" />
+            <reference name="destination id" type="mmsi" />
+            <choice name="retransmit flag">
+                <field name="no retransmission" length="1" value="0x0" />
+                <field name="retransmitted" length="1" value="0x1" />
+            </choice>
+            <field name="spare:" length="1" />
+            <reference name="safety related text" type="6 bit ascii" />
+        </sequence>
+    </common>
+</protocol>
