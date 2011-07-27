@@ -1,0 +1,18 @@
+<interrogation>
+    <repeat-indicator>3</repeat-indicator>
+    <source-id>3669720</source-id>
+    <destination-1>
+        <message-id>5</message-id>
+        <response-slot-offset>1920</response-slot-offset>
+    </destination-1>
+    <message-2>
+        <message>
+            <message-id>6</message-id>
+            <response-slot-offset>3075</response-slot-offset>
+        </message>
+    </message-2>
+    <destionaton-2>
+        <message-id>8</message-id>
+        <response-slot-offset>257</response-slot-offset>
+    </destionaton-2>
+</interrogation>
