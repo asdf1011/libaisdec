@@ -19,12 +19,7 @@
                     <field name="second" length="6" type="integer" />
                 </sequence>
             </sequence>
-            <choice name="position accuracy">
-                <field name="less than 10m" length="1" value="1" />
-                <field name="over 10m" length="1" value="0" />
-            </choice>
-            <field name="longitude 1 / 10000 minute" length="28" type="integer" />
-            <field name="latitude 1 / 10000 minute" length="27" type="integer" />
+            <reference name="position" />
             <choice name="type of electronic position fixing">
                 <field name="undefined" length="4" type="integer" value="0" />
                 <field name="global positioning system (GPS)" length="4" type="integer" value="1" />
@@ -42,10 +37,7 @@
                 <field name="request transmission" length="1" value="1" />
             </choice>
             <field name="spare:" length="9" />
-            <choice name="raim">
-                <field name="raim not in use" length="1" value="0" />
-                <field name="raim in use" length="1" value="1" />
-            </choice>
+            <reference name="raim" />
             <reference name="sotdma" />
         </sequence>
     </common>

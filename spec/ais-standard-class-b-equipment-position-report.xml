@@ -1,0 +1,42 @@
+<protocol>
+    <common>
+        <sequence name="standard class b equipment position report">
+            <field length="6" type="integer" value="18" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <reference name="position report" />
+            <field name="spare:" length="2" />
+            <choice name="class b unit flag">
+                <field name="class b sotdma unit" length="1" value="0" />
+                <field name="class b cs unit" length="1" value="1" />
+            </choice>
+            <choice name="class b display flag">
+                <field name="no display available" length="1" value="0" />
+                <field name="equipped with integrated display" length="1" value="1" />
+            </choice>
+            <choice name="class b dsc flag">
+                <field name="not equipped with dsc function" length="1" value="0" />
+                <field name="equipped with dsc function" length="1" value="1" />
+            </choice>
+            <choice name="class b message 22 flag">
+                <field name="no frequency management via message 22" length="1" value="0" />
+                <field name="frequency management via message 22" length="1" value="1" />
+            </choice>
+            <choice name="mode flag">
+                <field name="station operating in autonomous and continuous mode" length="1" value="0" />
+                <field name="station operating in assigned mode" length="1" value="1" />
+            </choice>
+            <reference name="raim" />
+            <choice name="communication state">
+                <sequence name="sotdma">
+                    <field length="1" value="0" />
+                    <reference name="sotdma" />
+                </sequence>
+                <sequence name="itdma">
+                    <field length="1" value="1" />
+                    <reference name="itdma" />
+                </sequence>
+            </choice>
+        </sequence>
+    </common>
+</protocol>

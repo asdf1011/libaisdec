@@ -1,0 +1,28 @@
+<standard-class-b-equipment-position-report>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>367059850</user-id>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>0</speed-over-ground-in-1_10-knot>
+        <position>
+            <over-10m></over-10m>
+            <longitude-in-1_10000-minute>-80948535</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>-25097650</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>337</course-over-ground>
+        <true-heading>205</true-heading>
+        <positioning-system-inoperative></positioning-system-inoperative>
+    </position-report>
+    <class-b-cs-unit></class-b-cs-unit>
+    <no-display-available></no-display-available>
+    <not-equipped-with-dsc-function></not-equipped-with-dsc-function>
+    <no-frequency-management-via-message-22></no-frequency-management-via-message-22>
+    <station-operating-in-assigned-mode></station-operating-in-assigned-mode>
+    <raim-in-use></raim-in-use>
+    <sotdma>
+        <sotdma>
+            <utc-direct></utc-direct>
+            <slot-time-out>0</slot-time-out>
+            <next-frame-slot-offset>1024</next-frame-slot-offset>
+        </sotdma>
+    </sotdma>
+</standard-class-b-equipment-position-report>

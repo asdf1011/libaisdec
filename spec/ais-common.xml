@@ -47,5 +47,59 @@
                 </choice>
             </choice>
         </sequence>
+
+        <sequence name="itdma">
+            <reference name="sync state" />
+            <choice name="slot increment">
+                <field name="no more transmissions" length="13" value="0x0" />
+                <field name="offset to next slot" length="13" type="integer" />
+            </choice>
+            <field name="number of slots" length="3" type="integer" />
+            <field name="keep slot allocated" length="1" type="integer" />
+        </sequence>
+
+        <sequence name="position">
+            <choice name="position accuracy">
+                <field name="less than 10m" length="1" value="1" />
+                <field name="over 10m" length="1" value="0" />
+            </choice>
+            <choice name="longitude">
+                <field name="not available" length="28" value="0x6791ac0" />
+                <field name="longitude in 1/10000 minute" length="28" type="signed integer" />
+            </choice>
+            <choice name="latitude">
+                <field name="not available" length="27" value="0x3412140" />
+                <field name="latitude in 1/10000 minute" length="27" type="signed integer" />
+            </choice>
+        </sequence>
+
+        <sequence name="position report">
+            <choice name="speed over ground">
+                <field name="not available" length="10" type="integer" value="1023" />
+                <field name="102.2 or higher" length="10" type="integer" value="1022" />
+                <field name="speed over ground in 1/10 knot" length="10" type="integer" />
+            </choice>
+            <reference name="position" />
+            <choice name="course over ground">
+                <field name="not available" length="12" type="integer" value="3600" />
+                <field name="course over ground" length="12" type="integer" max="3599" />
+            </choice>
+            <choice name="true heading">
+                <field name="not available" length="9" type="integer" value="511" />
+                <field name="true heading" length="9" type="integer" max="359" />
+            </choice>
+            <choice name="timestamp">
+                <field name="not available" length="6" type="integer" value="60" />
+                <field name="electronic position fixing system in manual input mode" length="6" type="integer" value="61" />
+                <field name="electronic position fixing system in estimated mode" length="6" type="integer" value="62" />
+                <field name="positioning system inoperative" length="6" type="integer" value="63" />
+                <field name="electronic position system UTC second" length="6" type="integer" />
+            </choice>
+        </sequence>
+
+        <choice name="raim">
+            <field name="raim not in use" length="1" value="0" />
+            <field name="raim in use" length="1" value="1" />
+        </choice>
     </common>
 </protocol>
