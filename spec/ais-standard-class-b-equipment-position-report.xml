@@ -4,6 +4,7 @@
             <field length="6" type="integer" value="18" />
             <field name="repeat indicator" length="2" type="integer" />
             <reference name="user id" type="mmsi" />
+            <field name="spare:" length="8" />
             <reference name="position report" />
             <field name="spare:" length="2" />
             <choice name="class b unit flag">
