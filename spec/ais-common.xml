@@ -205,5 +205,10 @@
             <field name="Galileo" length="4" type="integer" value="8" />
             <field name="internal GNSS" length="4" type="integer" value="15" />
         </choice>
+
+        <choice name="data terminal ready">
+            <field name="available" length="1" value="0" />
+            <field name="not available" length="1" value="1" />
+        </choice>
     </common>
 </protocol>

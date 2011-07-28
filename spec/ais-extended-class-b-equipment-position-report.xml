@@ -14,10 +14,7 @@
             <reference name="dimensions of ship" />
             <reference name="type of electronic position fixing" />
             <reference name="raim" />
-            <choice name="data terminal ready">
-                <field name="available" length="1" value="0" />
-                <field name="not available" length="1" value="1" />
-            </choice>
+            <reference name="data terminal ready" />
             <reference name="assigned mode flag" />
             <field name="spare:" length="4" />
         </sequence>

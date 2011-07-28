@@ -1,0 +1,33 @@
+<ship-static-and-voyage-related-data>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>351759000</user-id>
+    <compliant-with-ITU-R-M.1371-1></compliant-with-ITU-R-M.1371-1>
+    <number>9134270</number>
+    <call-sign>
+        <value>3FOF8  </value>
+    </call-sign>
+    <name>
+        <value>EVER DIADEM         </value>
+    </name>
+    <cargo-ships>
+        <All-ships-of-this-type></All-ships-of-this-type>
+    </cargo-ships>
+    <dimensions-of-ship>
+        <a>225</a>
+        <b>70</b>
+        <c>1</c>
+        <d>31</d>
+    </dimensions-of-ship>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <estimated-time-of-arrival>
+        <month>5</month>
+        <day>15</day>
+        <hour>14</hour>
+        <minute>0</minute>
+    </estimated-time-of-arrival>
+    <draught-in-0.1m>122</draught-in-0.1m>
+    <destination>
+        <value>NEW YORK            </value>
+    </destination>
+    <available></available>
+</ship-static-and-voyage-related-data>

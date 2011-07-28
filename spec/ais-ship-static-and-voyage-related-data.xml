@@ -1,0 +1,55 @@
+<protocol>
+    <common>
+        <sequence name="ship static and voyage related data" length="424" >
+            <field length="6" type="integer" value="5" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <choice name="version indicator">
+                <field name="compliant with ITU-R M.1371-1" length="2" value="0x0" />
+                <field name="compliant with ITU-R M.1371-3" length="2" value="0x1" />
+                <field name="compliant with future versions" length="2" type="integer" />
+            </choice>
+            <choice name="imo number">
+                <field name="not available" length="30" value="0x0" />
+                <field name="number" length="30" type="integer" />
+            </choice>
+            <sequence name="call sign" length="42">
+                <reference name="value" type="6 bit ascii" />
+            </sequence>
+            <sequence name="name" length="120">
+                <reference name="value" type="6 bit ascii" />
+            </sequence>
+            <reference name="type of ship" />
+            <reference name="dimensions of ship" />
+            <reference name="type of electronic position fixing" />
+            <sequence name="estimated time of arrival">
+                <choice name="month">
+                    <field name="not available" length="4" type="integer" value="0" />
+                    <field name="month" length="4" type="integer" min="1" max="12" />
+                </choice>
+                <choice name="day">
+                    <field name="not available" length="5" type="integer" value="0" />
+                    <field name="day" length="5" type="integer" min="1" max="31" />
+                </choice>
+                <choice name="hour">
+                    <field name="not available" length="5" type="integer" value="24" />
+                    <field name="hour" length="5" type="integer" min="0" max="23" />
+                </choice>
+                <choice name="minute">
+                    <field name="not available" length="6" type="integer" value="60" />
+                    <field name="minute" length="6" type="integer" min="0" max="59" />
+                </choice>
+            </sequence>
+            <choice name="maximum present static draught">
+                <field name="not available" length="8" type="integer" value="0" />
+                <field name="draught 25.5m or greater" length="8" type="integer" value="255" />
+                <field name="draught in 0.1m" length="8" type="integer" />
+            </choice>
+            <sequence name="destination" length="120">
+                <reference name="value" type="6 bit ascii" />
+            </sequence>
+            <reference name="data terminal ready" />
+            <field name="spare:" length="1" />
+        </sequence>
+    </common>
+</protocol>
