@@ -73,6 +73,14 @@
             </choice>
         </sequence>
 
+        <choice name="timestamp">
+            <field name="not available" length="6" type="integer" value="60" />
+            <field name="electronic position fixing system in manual input mode" length="6" type="integer" value="61" />
+            <field name="electronic position fixing system in estimated mode" length="6" type="integer" value="62" />
+            <field name="positioning system inoperative" length="6" type="integer" value="63" />
+            <field name="electronic position system UTC second" length="6" type="integer" />
+        </choice>
+
         <sequence name="position report">
             <choice name="speed over ground">
                 <field name="not available" length="10" type="integer" value="1023" />
@@ -88,13 +96,7 @@
                 <field name="not available" length="9" type="integer" value="511" />
                 <field name="true heading" length="9" type="integer" max="359" />
             </choice>
-            <choice name="timestamp">
-                <field name="not available" length="6" type="integer" value="60" />
-                <field name="electronic position fixing system in manual input mode" length="6" type="integer" value="61" />
-                <field name="electronic position fixing system in estimated mode" length="6" type="integer" value="62" />
-                <field name="positioning system inoperative" length="6" type="integer" value="63" />
-                <field name="electronic position system UTC second" length="6" type="integer" />
-            </choice>
+            <reference name="timestamp" />
         </sequence>
 
         <choice name="raim">

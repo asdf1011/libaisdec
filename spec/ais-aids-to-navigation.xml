@@ -1,0 +1,66 @@
+<protocol>
+    <common>
+        <sequence name="aids to navigation report">
+            <field length="6" type="integer" value="21" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="id" type="mmsi" />
+            <choice name="type">
+                <field name="not specified" length="5" type="integer" value="0" />
+                <field name="Reference point" length="5" type="integer" value="1" />
+                <field name="RACON" length="5" type="integer" value="2" />
+                <field name="Fixed structures off-shore, such as oil platforms, wind farms." length="5" type="integer" value="3" />
+                <field name="Spare, Reserved for future use" length="5" type="integer" value="4" />
+                <field name="Light, without sectors" length="5" type="integer" value="5" />
+                <field name="Light, with sectors" length="5" type="integer" value="6" />
+                <field name="Leading Light Front" length="5" type="integer" value="7" />
+                <field name="Leading Light Rear" length="5" type="integer" value="8" />
+                <field name="Beacon, Cardinal N" length="5" type="integer" value="9" />
+                <field name="Beacon, Cardinal E" length="5" type="integer" value="10" />
+                <field name="Beacon, Cardinal S" length="5" type="integer" value="11" />
+                <field name="Beacon, Cardinal W" length="5" type="integer" value="12" />
+                <field name="Beacon, Port hand" length="5" type="integer" value="13" />
+                <field name="Beacon, Starboard hand" length="5" type="integer" value="14" />
+                <field name="Beacon, Preferred Channel port hand" length="5" type="integer" value="15" />
+                <field name="Beacon, Preferred Channel starboard hand" length="5" type="integer" value="16" />
+                <field name="Beacon, Isolated danger" length="5" type="integer" value="17" />
+                <field name="Beacon, Safe water" length="5" type="integer" value="18" />
+                <field name="Beacon, Special mark" length="5" type="integer" value="19" />
+                <field name="Cardinal Mark N" length="5" type="integer" value="20" />
+                <field name="Cardinal Mark E" length="5" type="integer" value="21" />
+                <field name="Cardinal Mark S" length="5" type="integer" value="22" />
+                <field name="Cardinal Mark W" length="5" type="integer" value="23" />
+                <field name="Port hand Mark" length="5" type="integer" value="24" />
+                <field name="Starboard hand Mark" length="5" type="integer" value="25" />
+                <field name="Preferred Channel Port hand" length="5" type="integer" value="26" />
+                <field name="Preferred Channel Starboard hand" length="5" type="integer" value="27" />
+                <field name="Isolated danger" length="5" type="integer" value="28" />
+                <field name="Safe Water" length="5" type="integer" value="29" />
+                <field name="Special Mark" length="5" type="integer" value="30" />
+                <field name="Light Vessel/LANBY/Rigs" length="5" type="integer" value="31" />
+            </choice>
+            <sequence name="name of aids to navigation" length="120">
+                <reference name="name" type="6 bit ascii" />
+            </sequence>
+            <reference name="position" />
+            <field name="fixme - dimension reference for position" length="30" />
+            <reference name="type of electronic position fixing" />
+            <reference name="timestamp" />
+            <choice name="off position indicator">
+                <field name="on position" length="1" value="0" />
+                <field name="off position" length="1" value="1" />
+            </choice>
+            <field name="a to n status" length="8" type="integer" />
+            <reference name="raim" />
+            <choice name="real a to n flag">
+                <field name="real a to n" length="1" value="0" />
+                <field name="virtual a to n" length="1" value="0" />
+            </choice>
+            <reference name="assigned mode flag" />
+            <field name="spare:" length="1" />
+            <choice name="optional name of aid to navigation extension">
+                <reference name="name of aid to navigation extension" type="6 bit ascii" />
+                <sequence name="not present" />
+            </choice>
+        </sequence>
+    </common>
+</protocol>

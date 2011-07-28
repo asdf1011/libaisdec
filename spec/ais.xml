@@ -10,6 +10,7 @@
         <reference name="interrogation" />
         <reference name="standard class b equipment position report" />
         <reference name="extended class b equipment position report" />
+        <reference name="aids to navigation report" />
         <reference name="unknown packet" />
     </choice> 
 

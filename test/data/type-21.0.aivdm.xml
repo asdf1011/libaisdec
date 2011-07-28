@@ -1,0 +1,22 @@
+<aids-to-navigation-report>
+    <repeat-indicator>0</repeat-indicator>
+    <id>338040883</id>
+    <not-specified></not-specified>
+    <name-of-aids-to-navigation>
+        <name>UNH_GREAT_BAY_MARINA</name>
+    </name-of-aids-to-navigation>
+    <position>
+        <less-than-10m></less-than-10m>
+        <longitude-in-1_10000-minute>-42563575</longitude-in-1_10000-minute>
+        <latitude-in-1_10000-minute>25881587</latitude-in-1_10000-minute>
+    </position>
+    <fixme---dimension-reference-for-position>000000 00000000 00000000 00000000</fixme---dimension-reference-for-position>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <electronic-position-system-UTC-second>58</electronic-position-system-UTC-second>
+    <off-position></off-position>
+    <a-to-n-status>0</a-to-n-status>
+    <raim-in-use></raim-in-use>
+    <real-a-to-n></real-a-to-n>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+    <not-present></not-present>
+</aids-to-navigation-report>
