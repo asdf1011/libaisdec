@@ -23,10 +23,7 @@
                 <field name="no frequency management via message 22" length="1" value="0" />
                 <field name="frequency management via message 22" length="1" value="1" />
             </choice>
-            <choice name="mode flag">
-                <field name="station operating in autonomous and continuous mode" length="1" value="0" />
-                <field name="station operating in assigned mode" length="1" value="1" />
-            </choice>
+            <reference name="assigned mode flag" />
             <reference name="raim" />
             <choice name="communication state">
                 <sequence name="sotdma">

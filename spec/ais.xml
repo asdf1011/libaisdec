@@ -9,6 +9,7 @@
         <reference name="safety related message broadcast" />
         <reference name="interrogation" />
         <reference name="standard class b equipment position report" />
+        <reference name="extended class b equipment position report" />
         <reference name="unknown packet" />
     </choice> 
 

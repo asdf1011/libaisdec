@@ -1,0 +1,31 @@
+<extended-class-b-equipment-position-report>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>367059850</user-id>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>101</speed-over-ground-in-1_10-knot>
+        <position>
+            <over-10m></over-10m>
+            <longitude-in-1_10000-minute>-53249366</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>17496174</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>293</course-over-ground>
+        <not-available></not-available>
+        <electronic-position-system-UTC-second>16</electronic-position-system-UTC-second>
+    </position-report>
+    <name>
+        <name>CAPT.J.RIMES@@@@@@@@</name>
+    </name>
+    <cargo-ships>
+        <All-ships-of-this-type></All-ships-of-this-type>
+    </cargo-ships>
+    <dimensions-of-ship>
+        <a>5</a>
+        <b>21</b>
+        <c>4</c>
+        <d>4</d>
+    </dimensions-of-ship>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <raim-not-in-use></raim-not-in-use>
+    <available></available>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+</extended-class-b-equipment-position-report>

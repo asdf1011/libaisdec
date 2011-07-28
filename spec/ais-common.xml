@@ -101,5 +101,88 @@
             <field name="raim not in use" length="1" value="0" />
             <field name="raim in use" length="1" value="1" />
         </choice>
+
+        <choice name="type of ship modifier">
+            <sequence name="All ships of this type" value="${digit:} % 10" expected="0" />
+            <sequence name="Carrying DG, HS, or MP, IMO hazard or pollutant category  X(2)" value="${digit:} % 10" expected="1" />
+            <sequence name="Carrying DG, HS, or MP, IMO hazard or pollutant category  Y(2)" value="${digit:} % 10" expected="2" />
+            <sequence name="Carrying DG, HS, or MP, IMO hazard or pollutant category  Z(2)" value="${digit:} % 10" expected="3" />
+            <sequence name="Carrying DG, HS, or MP, IMO hazard or pollutant category  OS(2)" value="${digit:} % 10" expected="4" />
+            <sequence name="Reserved for future use" value="${digit:} % 10" min="5" max="8" />
+            <sequence name="No additional information" value="${digit:} % 10" expected="9" />
+        </choice>
+
+        <choice name="type of ship">
+            <field name="not available" length="8" type="integer" value="0" />
+            <field name="reserved" length="8" type="integer" min="10" max="19" />
+            <sequence name="wig">
+                <field name="digit:" length="8" type="integer" min="20" max="29" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <choice name="vessel">
+                <field name="Fishing" length="8" type="integer" expected="30" />
+                <field name="Towing" length="8" type="integer" expected="31" />
+                <field name="Towing and length of the tow exceeds 200 m or breadth exceeds 25 m" length="8" type="integer" expected="32" />
+                <field name="Engaged in dredging or underwater operations" length="8" type="integer" expected="33" />
+                <field name="Engaged in diving operations" length="8" type="integer" expected="34" />
+                <field name="Engaged in military operations" length="8" type="integer" expected="35" />
+                <field name="Sailing" length="8" type="integer" expected="36" />
+                <field name="Pleasure craft " length="8" type="integer" expected="37" />
+                <field name="Reserved for future use" length="8" type="integer" expected="38" />
+                <field name="Reserved for future use" length="8" type="integer" expected="39" />
+            </choice>
+            <sequence name="hsc">
+                <field name="digit:" length="8" type="integer" min="40" max="49" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <choice name="special craft">
+                <field name="Pilot vessel" length="8" type="integer" value="50" />
+                <field name="Search and rescue vessels" length="8" type="integer" value="51" />
+                <field name="Tugs" length="8" type="integer" value="52" />
+                <field name="Port tenders" length="8" type="integer" value="53" />
+                <field name="Vessels with anti-pollution facilities or equipment" length="8" type="integer" value="54" />
+                <field name="Law enforcement vessels" length="8" type="integer" value="55" />
+                <field name="Spare – for assignments to local vessels" length="8" type="integer" value="56" />
+                <field name="Spare – for assignments to local vessels" length="8" type="integer" value="57" />
+                <field name="Medical transports" length="8" type="integer" value="58" />
+                <field name="Ships and aircraft of States not parties to an armed conflict" length="8" type="integer" value="59" />
+            </choice>
+            <sequence name="passenger ships">
+                <field name="digit:" length="8" type="integer" min="60" max="69" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <sequence name="cargo ships">
+                <field name="digit:" length="8" type="integer" min="70" max="79" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <sequence name="tankers">
+                <field name="digit:" length="8" type="integer" min="80" max="89" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <sequence name="other types of ships">
+                <field name="digit:" length="8" type="integer" min="80" max="89" />
+                <reference name="modifier" type="type of ship modifier" />
+            </sequence>
+            <field name="reserved for regional used" length="8" type="integer" min="100" max="199" />
+            <field name="reserved for future used" length="8" type="integer" min="200" />
+        </choice>
+
+        <choice name="assigned mode flag">
+            <field name="station operating in autonomous and continuous mode" length="1" value="0" />
+            <field name="station operating in assigned mode" length="1" value="1" />
+        </choice>
+
+        <choice name="type of electronic position fixing">
+            <field name="undefined" length="4" type="integer" value="0" />
+            <field name="global positioning system (GPS)" length="4" type="integer" value="1" />
+            <field name="GNSS (GLONASS)" length="4" type="integer" value="2" />
+            <field name="combined GPS/GLONASS" length="4" type="integer" value="3" />
+            <field name="Loran-C" length="4" type="integer" value="4" />
+            <field name="Chayka" length="4" type="integer" value="5" />
+            <field name="integrated navigation system " length="4" type="integer" value="6" />
+            <field name="surveyed" length="4" type="integer" value="7" />
+            <field name="Galileo" length="4" type="integer" value="8" />
+            <field name="internal GNSS" length="4" type="integer" value="15" />
+        </choice>
     </common>
 </protocol>

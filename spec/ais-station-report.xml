@@ -20,18 +20,7 @@
                 </sequence>
             </sequence>
             <reference name="position" />
-            <choice name="type of electronic position fixing">
-                <field name="undefined" length="4" type="integer" value="0" />
-                <field name="global positioning system (GPS)" length="4" type="integer" value="1" />
-                <field name="GNSS (GLONASS)" length="4" type="integer" value="2" />
-                <field name="combined GPS/GLONASS" length="4" type="integer" value="3" />
-                <field name="Loran-C" length="4" type="integer" value="4" />
-                <field name="Chayka" length="4" type="integer" value="5" />
-                <field name="integrated navigation system " length="4" type="integer" value="6" />
-                <field name="surveyed" length="4" type="integer" value="7" />
-                <field name="Galileo" length="4" type="integer" value="8" />
-                <field name="internal GNSS" length="4" type="integer" value="15" />
-            </choice>
+            <reference name="type of electronic position fixing" />
             <choice name="transmission control for long range broadcast message">
                 <field name="stop transmission" length="1" value="0" />
                 <field name="request transmission" length="1" value="1" />
