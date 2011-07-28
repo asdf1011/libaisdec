@@ -81,17 +81,21 @@
             <field name="electronic position system UTC second" length="6" type="integer" />
         </choice>
 
+        <choice name="speed over ground">
+            <field name="not available" length="10" type="integer" value="1023" />
+            <field name="102.2 or higher" length="10" type="integer" value="1022" />
+            <field name="speed over ground in 1/10 knot" length="10" type="integer" />
+        </choice>
+
+        <choice name="course over ground">
+            <field name="not available" length="12" type="integer" value="3600" />
+            <field name="course over ground" length="12" type="integer" max="3599" />
+        </choice>
+
         <sequence name="position report">
-            <choice name="speed over ground">
-                <field name="not available" length="10" type="integer" value="1023" />
-                <field name="102.2 or higher" length="10" type="integer" value="1022" />
-                <field name="speed over ground in 1/10 knot" length="10" type="integer" />
-            </choice>
+            <reference name="speed over ground" />
             <reference name="position" />
-            <choice name="course over ground">
-                <field name="not available" length="12" type="integer" value="3600" />
-                <field name="course over ground" length="12" type="integer" max="3599" />
-            </choice>
+            <reference name="course over ground" />
             <choice name="true heading">
                 <field name="not available" length="9" type="integer" value="511" />
                 <field name="true heading" length="9" type="integer" max="359" />

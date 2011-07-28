@@ -1,0 +1,24 @@
+<standard-sar-aircraft-position-report>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>111265591</user-id>
+    <altitude-metres>15</altitude-metres>
+    <speed-over-ground-in-1_10-knot>0</speed-over-ground-in-1_10-knot>
+    <position>
+        <over-10m></over-10m>
+        <longitude-in-1_10000-minute>7128960</longitude-in-1_10000-minute>
+        <latitude-in-1_10000-minute>34667073</latitude-in-1_10000-minute>
+    </position>
+    <course-over-ground>0</course-over-ground>
+    <electronic-position-system-UTC-second>28</electronic-position-system-UTC-second>
+    <gsss></gsss>
+    <available></available>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <sotdma>
+            <utc-direct></utc-direct>
+            <slot-time-out>3</slot-time-out>
+            <received-stations>42</received-stations>
+        </sotdma>
+    </sotdma>
+</standard-sar-aircraft-position-report>

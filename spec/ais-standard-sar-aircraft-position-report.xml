@@ -1,0 +1,37 @@
+<protocol>
+    <common>
+        <sequence name="standard sar aircraft position report" length="168">
+            <field length="6" type="integer" value="9" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <choice name="altitude">
+                <field name="not available" length="12" type="integer" value="4095" />
+                <field name="4094m or higher" length="12" type="integer" value="4094" />
+                <field name="altitude metres" length="12" type="integer" />
+            </choice>
+            <reference name="speed over ground" />
+            <reference name="position" />
+            <reference name="course over ground" />
+            <reference name="timestamp" />
+            <choice name="altituide sensor">
+                <field name="gsss" length="1" value="0" />
+                <field name="barometric source" length="1" value="1" />
+            </choice>
+            <field name="spare:" length="7" />
+            <reference name="data terminal ready" />
+            <field name="spare:" length="3" />
+            <reference name="assigned mode flag" />
+            <reference name="raim" />
+            <choice name="communication state">
+                <sequence name="sotdma">
+                    <field length="1" value="0" />
+                    <reference name="sotdma" />
+                </sequence>
+                <sequence name="itdma">
+                    <field length="1" value="1" />
+                    <reference name="itdma" />
+                </sequence>
+            </choice>
+        </sequence>
+    </common>
+</protocol>

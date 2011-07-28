@@ -6,6 +6,7 @@
         <reference name="addressed binary message" />
         <reference name="acknowledge" />
         <reference name="binary broadcast message" />
+        <reference name="standard sar aircraft position report" />
         <reference name="utc and date inquiry" />
         <reference name="addressed safety related message" />
         <reference name="safety related message broadcast" />
