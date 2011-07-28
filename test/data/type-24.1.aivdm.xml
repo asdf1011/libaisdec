@@ -1,0 +1,17 @@
+<static-data-report-part-b>
+    <repeat-indicator>2</repeat-indicator>
+    <user-id>338085242</user-id>
+    <Vessels-with-anti-pollution-facilities-or-equipment></Vessels-with-anti-pollution-facilities-or-equipment>
+    <vender-id>
+        <number>ACR1234</number>
+    </vender-id>
+    <call-sign>
+        <number>WDD7883</number>
+    </call-sign>
+    <dimensions-of-ship>
+        <a>8</a>
+        <b>3</b>
+        <c>2</c>
+        <d>1</d>
+    </dimensions-of-ship>
+</static-data-report-part-b>

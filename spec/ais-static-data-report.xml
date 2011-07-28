@@ -1,0 +1,29 @@
+<protocol>
+    <common>
+        <sequence name="static data report part a" length="160" >
+            <field length="6" type="integer" value="24" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <field name="part number:" length="2" type="integer" value="0" />
+            <reference name="name" type="6 bit ascii" />
+        </sequence>
+
+        <sequence name="static data report part b" length="168" >
+            <field length="6" type="integer" value="24" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="user id" type="mmsi" />
+            <field name="part number:" length="2" type="integer" value="1" />
+            <reference name="type of ship" />
+            <!-- The specification seems suggest the first 3 characters should
+                 be text, the rest two binary numbers? -->
+            <sequence name="vender id" length="42">
+                <reference name="number" type="6 bit ascii" />
+            </sequence>
+            <sequence name="call sign" length="42">
+                <reference name="number" type="6 bit ascii" />
+            </sequence>
+            <reference name="dimensions of ship" />
+            <field name="spare:" length="6" />
+        </sequence>
+    </common>
+</protocol>

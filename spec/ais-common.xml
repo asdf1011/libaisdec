@@ -169,6 +169,25 @@
             <field name="reserved for future used" length="8" type="integer" min="200" />
         </choice>
 
+        <sequence name="dimensions of ship">
+            <choice name="a">
+                <field name="a 511m or greater" length="9" type="integer" value="511" />
+                <field name="a" length="9" type="integer" />
+            </choice>
+            <choice name="b">
+                <field name="b 511m or greater" length="9" type="integer" value="511" />
+                <field name="b" length="9" type="integer" />
+            </choice>
+            <choice name="c">
+                <field name="c 63m or greater" length="6" type="integer" value="63" />
+                <field name="c" length="6" type="integer" />
+            </choice>
+            <choice name="d">
+                <field name="d 63m or greater" length="6" type="integer" value="63" />
+                <field name="d" length="6" type="integer" />
+            </choice>
+        </sequence>
+
         <choice name="assigned mode flag">
             <field name="station operating in autonomous and continuous mode" length="1" value="0" />
             <field name="station operating in assigned mode" length="1" value="1" />
