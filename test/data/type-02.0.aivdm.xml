@@ -1,0 +1,26 @@
+<position-reports>
+    <repeat-indicator>0</repeat-indicator>
+    <userid>356302000</userid>
+    <under-way-using-engine></under-way-using-engine>
+    <turning-right-at-more-than-5-degrees-per-30s></turning-right-at-more-than-5-degrees-per-30s>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>139</speed-over-ground-in-1_10-knot>
+        <position>
+            <over-10m></over-10m>
+            <longitude-in-1_10000-minute>-42975686</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>24235415</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>877</course-over-ground>
+        <true-heading>91</true-heading>
+        <electronic-position-system-UTC-second>41</electronic-position-system-UTC-second>
+    </position-report>
+    <not-available></not-available>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <value>
+            <utc-direct></utc-direct>
+            <slot-time-out>3</slot-time-out>
+            <received-stations>6</received-stations>
+        </value>
+    </sotdma>
+</position-reports>
