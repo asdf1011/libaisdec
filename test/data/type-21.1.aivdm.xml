@@ -1,0 +1,22 @@
+<aids-to-navigation-report>
+    <repeat-indicator>0</repeat-indicator>
+    <id>123456789</id>
+    <Cardinal-Mark-N></Cardinal-Mark-N>
+    <name-of-aids-to-navigation>
+        <name>CHINA ROSE MURPHY EX</name>
+    </name-of-aids-to-navigation>
+    <position>
+        <over-10m></over-10m>
+        <longitude-in-1_10000-minute>-73619155</longitude-in-1_10000-minute>
+        <latitude-in-1_10000-minute>28752371</latitude-in-1_10000-minute>
+    </position>
+    <fixme---dimension-reference-for-position>000000 10100000 01010001 01000101</fixme---dimension-reference-for-position>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <electronic-position-system-UTC-second>50</electronic-position-system-UTC-second>
+    <on-position></on-position>
+    <a-to-n-status>165</a-to-n-status>
+    <raim-not-in-use></raim-not-in-use>
+    <real-a-to-n></real-a-to-n>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+    <name-of-aid-to-navigation-extension>PRESS ALERT@</name-of-aid-to-navigation-extension>
+</aids-to-navigation-report>
