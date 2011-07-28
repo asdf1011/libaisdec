@@ -1,0 +1,30 @@
+<station-report>
+    <base-station-report></base-station-report>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>3669702</user-id>
+    <timestamp>
+        <date>
+            <year>2007</year>
+            <month>5</month>
+            <day>14</day>
+        </date>
+        <time>
+            <hour>19</hour>
+            <minute>57</minute>
+            <second>39</second>
+        </time>
+    </timestamp>
+    <position>
+        <less-than-10m></less-than-10m>
+        <longitude-in-1_10000-minute>-45811417</longitude-in-1_10000-minute>
+        <latitude-in-1_10000-minute>22130260</latitude-in-1_10000-minute>
+    </position>
+    <surveyed></surveyed>
+    <stop-transmission></stop-transmission>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <utc-direct></utc-direct>
+        <slot-time-out>4</slot-time-out>
+        <slot-number-used-for-transmission>1503</slot-number-used-for-transmission>
+    </sotdma>
+</station-report>
