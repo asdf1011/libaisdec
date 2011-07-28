@@ -1,0 +1,27 @@
+<position-reports>
+    <repeat-indicator>0</repeat-indicator>
+    <userid>563808000</userid>
+    <moored></moored>
+    <rot-ais>0</rot-ais>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>0</speed-over-ground-in-1_10-knot>
+        <position>
+            <less-than-10m></less-than-10m>
+            <longitude-in-1_10000-minute>-45796520</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>22146000</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>2520</course-over-ground>
+        <true-heading>352</true-heading>
+        <electronic-position-system-UTC-second>35</electronic-position-system-UTC-second>
+    </position-report>
+    <not-available></not-available>
+    <raim-not-in-use></raim-not-in-use>
+    <itdma>
+        <value>
+            <utc-direct></utc-direct>
+            <no-more-transmissions></no-more-transmissions>
+            <number-of-slots>0</number-of-slots>
+            <keep-slot-allocated>0</keep-slot-allocated>
+        </value>
+    </itdma>
+</position-reports>
