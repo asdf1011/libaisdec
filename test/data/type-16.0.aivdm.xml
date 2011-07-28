@@ -1,0 +1,10 @@
+<assigned-mode-command>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>2053501</source-id>
+    <destination-a>
+        <id>224251000</id>
+        <offset-to-first-assigned-slot>200</offset-to-first-assigned-slot>
+        <increment-to-next-assigned-slot>0</increment-to-next-assigned-slot>
+    </destination-a>
+    <not-present></not-present>
+</assigned-mode-command>

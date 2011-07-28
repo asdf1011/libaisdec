@@ -1,0 +1,22 @@
+<protocol>
+    <common>
+        <sequence name="destination">
+            <reference name="id" type="mmsi" />
+            <field name="offset to first assigned slot" length="12" type="integer" />
+            <field name="increment to next assigned slot" length="10" type="integer" />
+        </sequence>
+
+        <sequence name="assigned mode command">
+            <field length="6" type="integer" value="16" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <field name="source id" length="30" type="integer" />
+            <field name="spare:" length="2" />
+            <reference name="destination a" type="destination" />
+            <choice name="optional destination b">
+                <reference name="destination a" type="destination" />
+                <sequence name="not present" />
+            </choice>
+        </sequence>
+    </common>
+</protocol>
+

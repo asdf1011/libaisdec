@@ -11,6 +11,7 @@
         <reference name="addressed safety related message" />
         <reference name="safety related message broadcast" />
         <reference name="interrogation" />
+        <reference name="assigned mode command" />
         <reference name="standard class b equipment position report" />
         <reference name="extended class b equipment position report" />
         <reference name="aids to navigation report" />
