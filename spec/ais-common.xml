@@ -210,5 +210,10 @@
             <field name="available" length="1" value="0" />
             <field name="not available" length="1" value="1" />
         </choice>
+
+        <choice name="retransmit flag">
+            <field name="no retransmission" length="1" value="0x0" />
+            <field name="retransmitted" length="1" value="0x1" />
+        </choice>
     </common>
 </protocol>

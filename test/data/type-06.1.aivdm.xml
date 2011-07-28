@@ -1,0 +1,10 @@
+<addressed-binary-message>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>265538450</source-id>
+    <sequence-number>0</sequence-number>
+    <destination-id>2655651</destination-id>
+    <no-retransmission></no-retransmission>
+    <unknown-international-operational-application>
+        <function-identifier>40</function-identifier>
+    </unknown-international-operational-application>
+</addressed-binary-message>

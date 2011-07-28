@@ -1,0 +1,11 @@
+<addressed-binary-message>
+    <repeat-indicator>1</repeat-indicator>
+    <source-id>150834090</source-id>
+    <sequence-number>3</sequence-number>
+    <destination-id>313240222</destination-id>
+    <no-retransmission></no-retransmission>
+    <unknown-application-identifier>
+        <dac>669</dac>
+        <function-identifier>11</function-identifier>
+    </unknown-application-identifier>
+</addressed-binary-message>

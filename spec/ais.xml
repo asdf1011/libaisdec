@@ -3,6 +3,7 @@
         <reference name="position reports" />
         <reference name="station report" />
         <reference name="ship static and voyage related data" />
+        <reference name="addressed binary message" />
         <reference name="acknowledge" />
         <reference name="binary broadcast message" />
         <reference name="utc and date inquiry" />

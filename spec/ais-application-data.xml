@@ -1,0 +1,59 @@
+
+<protocol>
+    <common>
+        <choice name="application data">
+            <reference name="test telegram" />
+            <reference name="discontinued" />
+            <reference name="interrogration on specific IFM" />
+            <reference name="capability interrogation" />
+            <reference name="application acknowledgement" />
+            <reference name="unknown system application" />
+            <reference name="unknown international operational application" />
+            <sequence name="unknown application identifier">
+                <field name="dac" length="10" type="integer" />
+                <field name="function identifier" length="6" type="integer" />
+            </sequence>
+        </choice>
+
+        <sequence name="unknown system application">
+            <field name="dac:" length="10" type="integer" value="1" />
+            <field name="function identifier" length="6" type="integer" min="6" max="9" />
+        </sequence>
+
+        <sequence name="unknown international operational application">
+            <field name="dac:" length="10" type="integer" value="1" />
+            <field name="function identifier" length="6" type="integer" min="10" max="63" />
+        </sequence>
+
+        <sequence name="test telegram">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="0" />
+        </sequence>
+
+        <sequence name="discontinued">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="1" />
+        </sequence>
+
+        <sequence name="interrogration on specific IFM">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="2" />
+        </sequence>
+
+        <sequence name="capability interrogation">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="3" />
+        </sequence>
+
+        <sequence name="capability interrogation reply">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="4" />
+        </sequence>
+
+        <sequence name="application acknowledgement">
+            <field name="dac:" length="10" value="0x1" />
+            <field name="function identifier:" length="6" type="integer" value="5" />
+        </sequence>
+
+    </common>
+</protocol>

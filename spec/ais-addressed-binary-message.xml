@@ -1,14 +1,14 @@
 <protocol>
     <common>
-        <sequence name="addressed safety related message">
-            <field name="type:" length="6" type="integer" value="12" />
+        <sequence name="addressed binary message">
+            <field length="6" type="integer" value="6" />
             <field name="repeat indicator" length="2" type="integer" />
             <reference name="source id" type="mmsi" />
             <field name="sequence number" length="2" type="integer" />
             <reference name="destination id" type="mmsi" />
             <reference name="retransmit flag" />
             <field name="spare:" length="1" />
-            <reference name="safety related text" type="6 bit ascii" />
+            <reference name="application data" />
         </sequence>
     </common>
 </protocol>
