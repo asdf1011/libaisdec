@@ -15,15 +15,16 @@
     <class-b-cs-unit></class-b-cs-unit>
     <no-display-available></no-display-available>
     <equipped-with-dsc-function></equipped-with-dsc-function>
+    <capable-of-operating-over-whole-band></capable-of-operating-over-whole-band>
     <frequency-management-via-message-22></frequency-management-via-message-22>
-    <station-operating-in-assigned-mode></station-operating-in-assigned-mode>
-    <raim-not-in-use></raim-not-in-use>
+    <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
+    <raim-in-use></raim-in-use>
     <itdma>
         <itdma>
             <station-synced-to-another-station></station-synced-to-another-station>
-            <offset-to-next-slot>4096</offset-to-next-slot>
-            <number-of-slots>1</number-of-slots>
-            <keep-slot-allocated>1</keep-slot-allocated>
+            <no-more-transmissions></no-more-transmissions>
+            <number-of-slots>3</number-of-slots>
+            <keep-slot-allocated>0</keep-slot-allocated>
         </itdma>
     </itdma>
 </standard-class-b-equipment-position-report>

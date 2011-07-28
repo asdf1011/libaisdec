@@ -15,14 +15,16 @@
     <class-b-sotdma-unit></class-b-sotdma-unit>
     <no-display-available></no-display-available>
     <not-equipped-with-dsc-function></not-equipped-with-dsc-function>
+    <capable-of-operating-over-525khz></capable-of-operating-over-525khz>
     <no-frequency-management-via-message-22></no-frequency-management-via-message-22>
     <station-operating-in-autonomous-and-continuous-mode></station-operating-in-autonomous-and-continuous-mode>
     <raim-not-in-use></raim-not-in-use>
-    <sotdma>
-        <sotdma>
-            <station-synced-to-a-base-station></station-synced-to-a-base-station>
-            <slot-time-out>0</slot-time-out>
-            <next-frame-slot-offset>7</next-frame-slot-offset>
-        </sotdma>
-    </sotdma>
+    <itdma>
+        <itdma>
+            <utc-direct></utc-direct>
+            <no-more-transmissions></no-more-transmissions>
+            <number-of-slots>7</number-of-slots>
+            <keep-slot-allocated>0</keep-slot-allocated>
+        </itdma>
+    </itdma>
 </standard-class-b-equipment-position-report>

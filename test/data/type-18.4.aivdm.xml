@@ -1,3 +1,32 @@
-<unknown-packet>
-    <type>18</type>
-</unknown-packet>
+<standard-class-b-equipment-position-report>
+    <repeat-indicator>1</repeat-indicator>
+    <user-id>30893048</user-id>
+    <position-report>
+        <speed-over-ground-in-1_10-knot>321</speed-over-ground-in-1_10-knot>
+        <position>
+            <less-than-10m></less-than-10m>
+            <longitude-in-1_10000-minute>81106001</longitude-in-1_10000-minute>
+            <latitude-in-1_10000-minute>-50640930</latitude-in-1_10000-minute>
+        </position>
+        <course-over-ground>542</course-over-ground>
+        <true-heading>125</true-heading>
+        <electronic-position-system-UTC-second>26</electronic-position-system-UTC-second>
+    </position-report>
+    <class-b-cs-unit></class-b-cs-unit>
+    <equipped-with-integrated-display></equipped-with-integrated-display>
+    <not-equipped-with-dsc-function></not-equipped-with-dsc-function>
+    <capable-of-operating-over-whole-band></capable-of-operating-over-whole-band>
+    <no-frequency-management-via-message-22></no-frequency-management-via-message-22>
+    <station-operating-in-assigned-mode></station-operating-in-assigned-mode>
+    <raim-not-in-use></raim-not-in-use>
+    <sotdma>
+        <sotdma>
+            <utc-indirect></utc-indirect>
+            <slot-time-out>1</slot-time-out>
+            <UTC-hour-and-minute>
+                <hour>19</hour>
+                <minute>3</minute>
+            </UTC-hour-and-minute>
+        </sotdma>
+    </sotdma>
+</standard-class-b-equipment-position-report>

@@ -1,6 +1,6 @@
 <protocol>
     <common>
-        <sequence name="standard class b equipment position report">
+        <sequence name="standard class b equipment position report" length="168">
             <field length="6" type="integer" value="18" />
             <field name="repeat indicator" length="2" type="integer" />
             <reference name="user id" type="mmsi" />
@@ -18,6 +18,10 @@
             <choice name="class b dsc flag">
                 <field name="not equipped with dsc function" length="1" value="0" />
                 <field name="equipped with dsc function" length="1" value="1" />
+            </choice>
+            <choice name="class b dsc band flag">
+                <field name="capable of operating over 525khz" length="1" value="0" />
+                <field name="capable of operating over whole band" length="1" value="1" />
             </choice>
             <choice name="class b message 22 flag">
                 <field name="no frequency management via message 22" length="1" value="0" />
