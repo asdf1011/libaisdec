@@ -1,0 +1,38 @@
+<protocol>
+    <common>
+        <sequence name="station fixed allocation schedule">
+            <choice name="offset number">
+                <field name="not available" length="12" type="integer" value="0" />
+                <field name="offset number" length="12" type="integer" />
+            </choice>
+            <choice name="number of slots">
+                <field name="not available" length="4" type="integer" value="0" />
+                <field name="offset number" length="4" type="integer" />
+            </choice>
+            <choice name="timeout">
+                <field name="not available" length="3" type="integer" value="0" />
+                <field name="timeout minutes" length="3" type="integer" />
+            </choice>
+            <choice name="increment">
+                <field name="one reservation block per frame" length="11" type="integer" value="0" />
+                <field name="increment to repeat reservation block" length="11" type="integer" />
+            </choice>
+        </sequence>
+
+        <choice name="optional station fixed allocation schedule">
+            <reference name="station fixed allocation schedule" />
+            <sequence name="not present" />
+        </choice>
+
+        <sequence name="data link management message" >
+            <field length="6" type="integer" value="20" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <field name="source station id" length="30" type="integer" />
+            <field name="spare:" length="2" />
+            <reference name="station fixed allocation schedule 1" type="station fixed allocation schedule" />
+            <reference name="station fixed allocation schedule 2" type="optional station fixed allocation schedule" />
+            <reference name="station fixed allocation schedule 3" type="optional station fixed allocation schedule" />
+            <reference name="station fixed allocation schedule 4" type="optional station fixed allocation schedule" />
+        </sequence>
+    </common>
+</protocol>

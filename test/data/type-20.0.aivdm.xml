@@ -1,0 +1,13 @@
+<data-link-management-message>
+    <repeat-indicator>3</repeat-indicator>
+    <source-station-id>3669705</source-station-id>
+    <station-fixed-allocation-schedule-1>
+        <offset-number>2182</offset-number>
+        <offset-number>5</offset-number>
+        <timeout-minutes>7</timeout-minutes>
+        <increment-to-repeat-reservation-block>225</increment-to-repeat-reservation-block>
+    </station-fixed-allocation-schedule-1>
+    <not-present></not-present>
+    <not-present></not-present>
+    <not-present></not-present>
+</data-link-management-message>

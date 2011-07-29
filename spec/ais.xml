@@ -15,6 +15,7 @@
         <reference name="gnss broadcast binary message" />
         <reference name="standard class b equipment position report" />
         <reference name="extended class b equipment position report" />
+        <reference name="data link management message" />
         <reference name="aids to navigation report" />
         <reference name="static data report part a" />
         <reference name="static data report part b" />
