@@ -1,0 +1,33 @@
+<protocol>
+    <common>
+        <sequence name="gnss broadcast binary message">
+            <field length="6" type="integer" value="17" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <field name="source id" length="30" type="integer" />
+            <field name="spare:" length="2" />
+            <choice name="longitude">
+                <field name="not available" length="18" type="signed integer" value="181" />
+                <field name="longitude in 1/10 minute" length="18" type="signed integer" />
+            </choice>
+            <choice name="latitude">
+                <field name="not available" length="17" type="signed integer" value="181" />
+                <field name="latitude in 1/10 minute" length="17" type="signed integer" />
+            </choice>
+            <field name="spare:" length="5" />
+            <choice name="optional data">
+                <sequence name="data">
+                    <field name="message type" length="6" type="integer" />
+                    <field name="station id" length="10" type="integer" />
+                    <field name="z count" length="13" type="integer" />
+                    <field name="sequence number" length="3" type="integer" />
+                    <field name="number of dgnss words:" length="5" type="integer" max="29" />
+                    <field name="station health" length="3" type="integer" />
+                    <sequenceof name="data words" count="${number of dgnss words:}">
+                        <field name="dgnss data word" length="24" type="integer" />
+                    </sequenceof>
+                </sequence>
+                <sequence name="not available" />
+            </choice>
+        </sequence>
+    </common>
+</protocol>

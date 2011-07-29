@@ -1,0 +1,29 @@
+<gnss-broadcast-binary-message>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>2734450</source-id>
+    <longitude-in-1_10-minute>17478</longitude-in-1_10-minute>
+    <latitude-in-1_10-minute>35992</latitude-in-1_10-minute>
+    <data>
+        <message-type>31</message-type>
+        <station-id>5</station-id>
+        <z-count>2776</z-count>
+        <sequence-number>0</sequence-number>
+        <station-health>0</station-health>
+        <data-words>
+            <dgnss-data-word>3276475</dgnss-data-word>
+            <dgnss-data-word>16066852</dgnss-data-word>
+            <dgnss-data-word>16659450</dgnss-data-word>
+            <dgnss-data-word>2700287</dgnss-data-word>
+            <dgnss-data-word>10550569</dgnss-data-word>
+            <dgnss-data-word>3341751</dgnss-data-word>
+            <dgnss-data-word>403746</dgnss-data-word>
+            <dgnss-data-word>16660489</dgnss-data-word>
+            <dgnss-data-word>2697981</dgnss-data-word>
+            <dgnss-data-word>15274537</dgnss-data-word>
+            <dgnss-data-word>2751735</dgnss-data-word>
+            <dgnss-data-word>10531</dgnss-data-word>
+            <dgnss-data-word>16765452</dgnss-data-word>
+            <dgnss-data-word>2730666</dgnss-data-word>
+        </data-words>
+    </data>
+</gnss-broadcast-binary-message>
