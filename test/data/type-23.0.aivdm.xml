@@ -1,0 +1,17 @@
+<group-assignment-command>
+    <repeat-indicator>0</repeat-indicator>
+    <source-id>2268120</source-id>
+    <upper-right-corner>
+        <longitude-in-1_10-minute>1578</longitude-in-1_10-minute>
+        <latitude-in-1_10-minute>30642</latitude-in-1_10-minute>
+    </upper-right-corner>
+    <lower-left-corner>
+        <longitude-in-1_10-minute>1096</longitude-in-1_10-minute>
+        <latitude-in-1_10-minute>30408</latitude-in-1_10-minute>
+    </lower-left-corner>
+    <inland-waterways></inland-waterways>
+    <not-available></not-available>
+    <tx-a_tx-b,-rx-a_tx-b></tx-a_tx-b,-rx-a_tx-b>
+    <Next-shorter-reporting-interval></Next-shorter-reporting-interval>
+    <quiet-time-minutes>0</quiet-time-minutes>
+</group-assignment-command>

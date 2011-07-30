@@ -1,0 +1,48 @@
+<protocol>
+    <common>
+        <sequence name="group assignment command" length="160">
+            <field length="6" type="integer" value="23" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="spare:" length="2" />
+            <reference name="upper right corner" type="low res position" />
+            <reference name="lower left corner" type="low res position" />
+            <choice name="station type">
+                <field name="all types of mobiles" length="4" type="integer" value="0" />
+                <field name="class a mobile stations only" length="4" type="integer" value="1" />
+                <field name="all types of class b mobile stations" length="4" type="integer" value="2" />
+                <field name="sar airborne mobile stations" length="4" type="integer" value="3" />
+                <field name="class B SO mobile stations only" length="4" type="integer" value="4" />
+                <field name="class B CS shipborne mobile station only" length="4" type="integer" value="5" />
+                <field name="inland waterways" length="4" type="integer" value="6" />
+                <field name="regional use" length="4" type="integer" min="7" max="9" />
+                <field name="future use" length="4" type="integer" min="10" max="15" />
+            </choice>
+            <reference name="type of ship" />
+            <field name="spare:" length="22" />
+            <choice name="tx rx mode">
+                <field name="tx a/tx b, rx a/tx b" length="2" type="integer" value="0" />
+                <field name="tx a, rx a/tx b" length="2" type="integer" value="1" />
+                <field name="tx b, rx a/tx b" length="2" type="integer" value="2" />
+                <field name="reserved for future use" length="2" type="integer" value="3" />
+            </choice>
+            <choice name="reporting interval">
+                <field name="As given by the autonomous mode" length="4" type="integer" value="0" />
+                <field name="10 min" length="4" type="integer" value="1" />
+                <field name="6 min" length="4" type="integer" value="2" />
+                <field name="3 min" length="4" type="integer" value="3" />
+                <field name="1 min" length="4" type="integer" value="4" />
+                <field name="30 sec" length="4" type="integer" value="5" />
+                <field name="15 sec" length="4" type="integer" value="6" />
+                <field name="10 sec" length="4" type="integer" value="7" />
+                <field name="5 sec" length="4" type="integer" value="8" />
+                <field name="Next shorter reporting interval" length="4" type="integer" value="9" />
+                <field name="Next longer reporting interval" length="4" type="integer" value="10" />
+                <field name="2 sec" length="4" type="integer" value="11" />
+                <field name="Reserved for future use" length="4" type="integer" min="12" max="15" />
+            </choice>
+            <field name="quiet time minutes" length="4" type="integer" />
+            <field name="spare:" length="6" />
+        </sequence>
+    </common>
+</protocol>

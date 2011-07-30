@@ -230,5 +230,6 @@
             <field name="no retransmission" length="1" value="0x0" />
             <field name="retransmitted" length="1" value="0x1" />
         </choice>
+
     </common>
 </protocol>
