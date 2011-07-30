@@ -1,0 +1,21 @@
+<channel_management>
+    <repeat_indicator>0</repeat_indicator>
+    <station_id>3160048</station_id>
+    <channel_a>2087</channel_a>
+    <channel_b>2088</channel_b>
+    <tx_a_tx_b__rx_a_tx_b></tx_a_tx_b__rx_a_tx_b>
+    <high></high>
+    <broadcast>
+        <upper_right_corner>
+            <longitude_in_1_10_minute>-44100</longitude_in_1_10_minute>
+            <latitude_in_1_10_minute>27330</latitude_in_1_10_minute>
+        </upper_right_corner>
+        <lower_left_corner>
+            <longitude_in_1_10_minute>-48100</longitude_in_1_10_minute>
+            <latitude_in_1_10_minute>25400</latitude_in_1_10_minute>
+        </lower_left_corner>
+    </broadcast>
+    <default></default>
+    <default></default>
+    <transitional_zone_size_miles>5</transitional_zone_size_miles>
+</channel_management>

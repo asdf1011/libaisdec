@@ -17,6 +17,7 @@
         <reference name="extended class b equipment position report" />
         <reference name="data link management message" />
         <reference name="aids to navigation report" />
+        <reference name="channel management" />
         <reference name="static data report part a" />
         <reference name="static data report part b" />
         <reference name="unknown packet" />

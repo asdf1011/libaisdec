@@ -5,14 +5,7 @@
             <field name="repeat indicator" length="2" type="integer" />
             <field name="source id" length="30" type="integer" />
             <field name="spare:" length="2" />
-            <choice name="longitude">
-                <field name="not available" length="18" type="signed integer" value="181" />
-                <field name="longitude in 1/10 minute" length="18" type="signed integer" />
-            </choice>
-            <choice name="latitude">
-                <field name="not available" length="17" type="signed integer" value="181" />
-                <field name="latitude in 1/10 minute" length="17" type="signed integer" />
-            </choice>
+            <reference name="position" type="low res position" />
             <field name="spare:" length="5" />
             <choice name="optional data">
                 <sequence name="data">

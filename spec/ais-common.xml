@@ -73,6 +73,17 @@
             </choice>
         </sequence>
 
+        <sequence name="low res position">
+            <choice name="longitude">
+                <field name="not available" length="18" type="signed integer" value="181" />
+                <field name="longitude in 1/10 minute" length="18" type="signed integer" />
+            </choice>
+            <choice name="latitude">
+                <field name="not available" length="17" type="signed integer" value="181" />
+                <field name="latitude in 1/10 minute" length="17" type="signed integer" />
+            </choice>
+        </sequence>
+
         <choice name="timestamp">
             <field name="not available" length="6" type="integer" value="60" />
             <field name="electronic position fixing system in manual input mode" length="6" type="integer" value="61" />
