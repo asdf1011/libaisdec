@@ -1,8 +1,10 @@
 <gnss-broadcast-binary-message>
     <repeat-indicator>0</repeat-indicator>
     <source-id>2734450</source-id>
-    <longitude-in-1_10-minute>17478</longitude-in-1_10-minute>
-    <latitude-in-1_10-minute>35992</latitude-in-1_10-minute>
+    <position>
+        <longitude-in-1_10-minute>17478</longitude-in-1_10-minute>
+        <latitude-in-1_10-minute>35992</latitude-in-1_10-minute>
+    </position>
     <data>
         <message-type>31</message-type>
         <station-id>5</station-id>
