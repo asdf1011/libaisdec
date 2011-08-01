@@ -1,13 +1,55 @@
 <protocol>
-    <!-- Every six bits convert to an aivdm character -->
-    <sequenceof name="aivdm">
-        <sequence name="value" value="${offset value:} + 48">
-            <choice name="offset value:">
-                <sequence value="${raw value:} + 8">
-                    <field name="raw value:" length="6" min="40" />
+    <sequence name="packet">
+        <field name="aivdm header:" length="7 * 8" type="text" value="!AIVDM," />
+        <reference name="fragment count" type="digit" />
+        <reference name="comma:" />
+        <reference name="fragment number" type="digit" />
+        <reference name="comma:" />
+        <choice name="optional message id">
+            <reference name="message id" type="digit" />
+            <sequence />
+        </choice>
+        <reference name="comma:" />
+        <field name="radio channel code" length="8" type="text" />
+        <reference name="comma:" />
+        <sequenceof name="payload">
+            <field name="character" type="text" length="8" />
+            <choice>
+                <sequence>
+                    <reference name="comma:" />
+                    <end-sequenceof />
                 </sequence>
-                <field name="raw value:" length="6" />
+                <sequence />
             </choice>
+        </sequenceof>
+        <reference name="num fill bits" type="digit" />
+        <field type="text" length="8" value="*" />
+        <field name="checksum" type="text" length="16" />
+        <sequenceof name="spurious data">
+            <choice name="character">
+                <field name="eol:" type="text" length="8" value="0xa" ><end-sequenceof /></field>
+                <field name="character" length="8" type="text" />
+            </choice>
+        </sequenceof>
+    </sequence>
+
+    <common>
+        <!-- Every six bits convert to an aivdm character -->
+        <sequenceof name="payload">
+            <sequence name="value" value="${offset value:} + 48">
+                <choice name="offset value:">
+                    <sequence value="${raw value:} + 8">
+                        <field name="raw value:" length="6" min="40" />
+                    </sequence>
+                    <field name="raw value:" length="6" />
+                </choice>
+            </sequence>
+        </sequenceof>
+
+        <sequence name="digit" value="${digit:} - 48">
+            <field name="digit:" length="8" min="48" max="57" />
         </sequence>
-    </sequenceof>
+
+        <field name="comma:" length="8" type="text" value="," />
+    </common>
 </protocol>

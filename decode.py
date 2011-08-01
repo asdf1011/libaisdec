@@ -4,10 +4,11 @@ from bdec import DecodeError
 from bdec.data import Data
 from bdec.field import Field
 from bdec.spec import load_specs, LoadError
-from bdec.output.instance import encode
+from bdec.output.instance import encode, decode
 from bdec.output.xmlout import to_file
 import getopt
 from glob import glob
+import operator
 import os.path
 import sys
 
@@ -57,20 +58,41 @@ class Decoder:
             else:
                 yield is_starting, name, entry, data, value
 
-    def decode(self, data):
+    def decode(self, input_file):
         # Encode aivdm data back into binary
-        try:
-            bits = encode(self._aivdm[0], list(ord(c) for c in data.strip()))
-        except DecodeError, ex:
-            filename, line_number, column_number = self._aivdm[2][ex.entry]
-            sys.exit('%s[%i] - %s' %  (filename, line_number, ex))
+        fragments = []
+        payload = self._aivdm[1][0]
+        data = Data(input_file)
+        while data:
+            try:
+                packet = decode(self._aivdm[0], data)
+                bits = encode(payload, list(ord(c.character) for c in packet.payload))
+                bits = bits.pop(len(bits) - packet.num_fill_bits)
+                if len(fragments) == packet.fragment_number - 1:
+                    fragments.append(bits)
+                    if len(fragments) == packet.fragment_count:
+                        self._decode_ais(reduce(operator.add, fragments))
+                        fragments = []
+                else:
+                    sys.stderr.write('Expected fragment number %i, got %i (of %i)\n' % (
+                        len(fragments) + 1, packet.fragment_number, packet.fragment_count))
+                    fragments = []
+            except DecodeError, ex:
+                filename, line_number, column_number = self._aivdm[2][ex.entry]
+                sys.stderr.write('%s[%i] - %s\n' %  (filename, line_number, ex))
+                fragments = []
 
+                # Read to the next newline
+                while data and data.pop(8).text('ascii') != '\n':
+                    pass
+
+    def _decode_ais(self, data):
         # Decode the ais binary
         try:
-            to_file(self._filter_6_bit_ascii(self._ais[0].decode(bits)), sys.stdout)
+            to_file(self._filter_6_bit_ascii(self._ais[0].decode(data)), sys.stdout)
         except DecodeError, ex:
             filename, line_number, column_number = self._ais[2][ex.entry]
-            sys.exit('%s[%i] - %s' %  (filename, line_number, ex))
+            sys.stderr.write('%s[%i] - %s\n' %  (filename, line_number, ex))
 
 def main(args):
     try:
@@ -89,7 +111,7 @@ def main(args):
 
     decoder = Decoder()
     for filename in args:
-        decoder.decode(file(filename, 'rb').read())
+        decoder.decode(file(filename, 'rb'))
 
 if __name__ == '__main__':
     main(sys.argv)
