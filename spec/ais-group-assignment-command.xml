@@ -27,7 +27,7 @@
                 <field name="reserved for future use" length="2" type="integer" value="3" />
             </choice>
             <choice name="reporting interval">
-                <field name="As given by the autonomous mode" length="4" type="integer" value="0" />
+                <field name="as given by the autonomous mode" length="4" type="integer" value="0" />
                 <field name="10 min" length="4" type="integer" value="1" />
                 <field name="6 min" length="4" type="integer" value="2" />
                 <field name="3 min" length="4" type="integer" value="3" />
@@ -36,10 +36,10 @@
                 <field name="15 sec" length="4" type="integer" value="6" />
                 <field name="10 sec" length="4" type="integer" value="7" />
                 <field name="5 sec" length="4" type="integer" value="8" />
-                <field name="Next shorter reporting interval" length="4" type="integer" value="9" />
-                <field name="Next longer reporting interval" length="4" type="integer" value="10" />
+                <field name="next shorter reporting interval" length="4" type="integer" value="9" />
+                <field name="next longer reporting interval" length="4" type="integer" value="10" />
                 <field name="2 sec" length="4" type="integer" value="11" />
-                <field name="Reserved for future use" length="4" type="integer" min="12" max="15" />
+                <field name="reserved for future use" length="4" type="integer" min="12" max="15" />
             </choice>
             <field name="quiet time minutes" length="4" type="integer" />
             <field name="spare:" length="6" />

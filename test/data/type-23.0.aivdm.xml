@@ -12,6 +12,6 @@
     <inland-waterways></inland-waterways>
     <not-available></not-available>
     <tx-a_tx-b,-rx-a_tx-b></tx-a_tx-b,-rx-a_tx-b>
-    <Next-shorter-reporting-interval></Next-shorter-reporting-interval>
+    <next-shorter-reporting-interval></next-shorter-reporting-interval>
     <quiet-time-minutes>0</quiet-time-minutes>
 </group-assignment-command>
