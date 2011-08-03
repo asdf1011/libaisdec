@@ -159,8 +159,8 @@
                 <field name="Port tenders" length="8" type="integer" value="53" />
                 <field name="Vessels with anti-pollution facilities or equipment" length="8" type="integer" value="54" />
                 <field name="Law enforcement vessels" length="8" type="integer" value="55" />
-                <field name="Spare – for assignments to local vessels" length="8" type="integer" value="56" />
-                <field name="Spare – for assignments to local vessels" length="8" type="integer" value="57" />
+                <field name="Spare - for assignments to local vessels" length="8" type="integer" value="56" />
+                <field name="Spare - for assignments to local vessels" length="8" type="integer" value="57" />
                 <field name="Medical transports" length="8" type="integer" value="58" />
                 <field name="Ships and aircraft of States not parties to an armed conflict" length="8" type="integer" value="59" />
             </choice>
