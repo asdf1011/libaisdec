@@ -1,5 +1,5 @@
 <protocol>
-    <choice name="packet">
+    <choice name="message">
         <reference name="position reports" />
         <reference name="station report" />
         <reference name="ship static and voyage related data" />
@@ -21,11 +21,11 @@
         <reference name="group assignment command" />
         <reference name="static data report part a" />
         <reference name="static data report part b" />
-        <reference name="unknown packet" />
+        <reference name="unknown message" />
     </choice> 
 
     <common>
-        <sequence name="unknown packet">
+        <sequence name="unknown message">
             <field name="type" length="6" type="integer" />
         </sequence>
     </common>
