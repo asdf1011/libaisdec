@@ -103,6 +103,7 @@ def main(args):
     for opt, value in opts:
         if opt == '-h':
             usage(args[0])
+            return 0
         else:
             raise NotImplementedError(opt)
     
