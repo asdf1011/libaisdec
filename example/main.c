@@ -68,6 +68,7 @@ int decode(FILE* input, enum PrintOption printing) {
             BitBuffer binary = {0};
             if (getBinaryPayload(&packet.payload, &binary)) {
                 unsigned char* allocatedBuffer = binary.buffer;
+                binary.num_bits -= packet.numFillBits;
                 struct Message message;
                 if (decodeMessage(&binary, &message)) {
                     if (printing == MESSAGE_XML) {
