@@ -20,12 +20,12 @@ $(lib_dir)/main.o: main.c $(libais) $(libaivdm)
 $(libaivdm) : ../spec/aivdm.xml
 	 mkdir -p $(aivdm_dir)
 	 bcompile --encoder -d $(aivdm_dir) ../spec/aivdm.xml
-	 make -C $(aivdm_dir)
+	 cd $(aivdm_dir) && $(MAKE)
 
 $(libais) : ../spec/ais.xml
 	 mkdir -p $(ais_dir)
 	 bcompile -d $(ais_dir) ../spec/ais*.xml
-	 make -C $(ais_dir)
+	 cd $(ais_dir) && $(MAKE)
 
 clean:
 	 rm -rf $(lib_dir)
