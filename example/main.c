@@ -142,9 +142,10 @@ int main(int argc, char* argv[]) {
      */
     int i;
     enum PrintOption printing = MESSAGE_XML;
-    for (i = 1; i < argc; ++i) {
-        if (argv[i][0] == '-') {
-            switch (argv[i][1]) {
+    for (i = 1; i < argc && argv[i][0] == '-'; ++i) {
+        int j;
+        for (j = 1; argv[i][j] != 0; ++j) {
+            switch (argv[i][j]) {
             case 'h':
                 usage(argv[0]);
                 return EXIT_SUCCESS;
@@ -158,14 +159,10 @@ int main(int argc, char* argv[]) {
                 printing = NONE;
                 break;
             default:
-                fprintf(stderr, "Unknown option '%s'! See %s -h for more details.\n",
-                        argv[i], argv[0]);
+                fprintf(stderr, "Unknown option '%c'! See %s -h for more details.\n",
+                        argv[i][j], argv[0]);
                 return EXIT_FAILURE;
             }
-        }
-        else {
-            /* We've found the first argument */
-            break;
         }
     }
 
