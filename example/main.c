@@ -23,6 +23,7 @@ static void usage(char* program) {
     printf("   -m    Print the message xml (default).\n");
     printf("   -p    Print the packet xml.\n");
     printf("   -q    Quiet output (don't print xml).\n");
+    printf("   -v    Verbose logging.\n");
 }
 
 int encodeBinaryPayload(const struct Payload0* input, struct EncodedData* output) {
@@ -78,7 +79,7 @@ int updatePayload(int *fragmentNumber, int *fragmentCount,
     return 0;
 }
 
-int decode(FILE* input, enum PrintOption printing) {
+int decode(FILE* input, enum PrintOption printing, int shouldLogVerbose) {
     char data[1024];
     int dataLength = 0;
     struct EncodedData payloadBinary = {0};
@@ -110,6 +111,32 @@ int decode(FILE* input, enum PrintOption printing) {
                     if (printing == MESSAGE_XML) {
                         printXmlMessage(&message, 0, "message");
                     }
+                    if (shouldLogVerbose) {
+                        const struct ApplicationData* appData = 0;
+                        switch (message.option) {
+                        case ADDRESSED_BINARY_MESSAGE:
+                            appData = &message.value.addressedBinaryMessage.applicationData;
+                            break;
+                        case BINARY_BROADCAST_MESSAGE:
+                            appData = &message.value.binaryBroadcastMessage.applicationData;
+                            break;
+                        case UNKNOWN_MESSAGE:
+                            fprintf(stderr, "Unknown message type-%02i at line %i!\n",
+                                   message.value.unknownMessage.type, lineNumber);
+                            break;
+                        default:
+                            break;
+                        }
+                        if (appData != 0) {
+                            if (appData->option == UNKNOWN_APPLICATION_IDENTIFIER) {
+                                const struct UnknownApplicationIdentifier *id =
+                                    &appData->value.unknownApplicationIdentifier;
+                                fprintf(stderr, "Unknown application data "
+                                        "(dac=%i, fid=%i) at line %i\n", id->dac,
+                                        id->functionIdentifier, lineNumber);
+                            }
+                        }
+                    }
                     freeMessage(&message);
                 }
                 else {
@@ -120,7 +147,9 @@ int decode(FILE* input, enum PrintOption printing) {
             freePacket(&packet);
         }
         else {
-            fprintf(stderr, "Failed to decode packet at line %i!\n", lineNumber);
+            if (shouldLogVerbose) {
+                fprintf(stderr, "Failed to decode packet at line %i!\n", lineNumber);
+            }
             char* next = memchr(data, '\n', dataLength);
             if (next == 0) {
                 /* No more packets. */
@@ -129,7 +158,7 @@ int decode(FILE* input, enum PrintOption printing) {
             buffer.buffer = (unsigned char*)next + 1;
         }
 
-        /* Move the data still to decode to the start of the buffer. */
+        /* Update the current line number. */
         int bytesConsumed = (char*)buffer.buffer - data;
         dataLength -= bytesConsumed;
         if (data[bytesConsumed - 1] != '\n') {
@@ -142,6 +171,7 @@ int decode(FILE* input, enum PrintOption printing) {
             }
         }
         
+        /* Move the data still to decode to the start of the buffer. */
         memmove(data, buffer.buffer, dataLength);
     }
     free(payloadBinary.buffer);
@@ -154,6 +184,7 @@ int main(int argc, char* argv[]) {
      */
     int i;
     enum PrintOption printing = MESSAGE_XML;
+    int shouldLogVerbose = 0;
     for (i = 1; i < argc && argv[i][0] == '-'; ++i) {
         int j;
         for (j = 1; argv[i][j] != 0; ++j) {
@@ -170,6 +201,9 @@ int main(int argc, char* argv[]) {
             case 'q':
                 printing = NONE;
                 break;
+            case 'v':
+                shouldLogVerbose = 1;
+                break;
             default:
                 fprintf(stderr, "Unknown option '%c'! See %s -h for more details.\n",
                         argv[i][j], argv[0]);
@@ -180,7 +214,7 @@ int main(int argc, char* argv[]) {
 
     if (i == argc) {
         fprintf(stderr, "Decoding from stdin...\n");
-        if (!decode(stdin, printing)) {
+        if (!decode(stdin, printing, shouldLogVerbose)) {
             return EXIT_FAILURE;
         }
     }
@@ -191,7 +225,7 @@ int main(int argc, char* argv[]) {
                 fprintf(stderr, "Failed to open '%s': %s\n", argv[i], strerror(errno));
                 return EXIT_FAILURE;
             }
-            if (!decode(datafile, printing)) {
+            if (!decode(datafile, printing, shouldLogVerbose)) {
                 fclose(datafile);
                 return EXIT_FAILURE;
             }
