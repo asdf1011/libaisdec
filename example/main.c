@@ -25,7 +25,7 @@ static void usage(char* program) {
     printf("   -q    Quiet output (don't print xml).\n");
 }
 
-int getBinaryPayload(const struct Payload0* input, BitBuffer* output) {
+int encodeBinaryPayload(const struct Payload0* input, struct EncodedData* output) {
     struct Payload payload;
     payload.items = malloc(sizeof(int) * input->count);
     payload.count = input->count;
@@ -35,22 +35,54 @@ int getBinaryPayload(const struct Payload0* input, BitBuffer* output) {
             payload.items[i] = input->items[i].character.buffer[0];
         }
     }
-    struct EncodedData buffer = {0};
-    if (!encodePayload(&buffer, &payload)) {
+    if (!encodePayload(output, &payload)) {
         fprintf(stderr, "Failed to get binary payload!\n");
         free(payload.items);
         return 0;
     }
     free(payload.items);
-    output->buffer = (unsigned char*)buffer.buffer;
-    output->num_bits = buffer.num_bits;
-    output->start_bit = 0;
     return 1;
+}
+
+/**
+ * Update the binary payload given the new packet.
+ *
+ * Returns 1 if the binary payload is complete, otherwise 0.
+ */
+int updatePayload(int *fragmentNumber, int *fragmentCount,
+        const struct Packet *packet, struct EncodedData *payloadBinary) {
+    if ((*fragmentCount != 0 && *fragmentCount != packet->fragmentCount) ||
+            *fragmentNumber + 1 != packet->fragmentNumber) {
+        fprintf(stderr, "Was expecting fragment %i / %i, got %i / %i! "
+                "Skipping packet.\n", *fragmentNumber + 1, *fragmentCount,
+                packet->fragmentNumber, packet->fragmentCount);
+        *fragmentNumber = 0;
+        *fragmentCount = 0;
+        return 0;
+    }
+    *fragmentNumber = packet->fragmentNumber;
+    *fragmentCount = packet->fragmentCount;
+    if (encodeBinaryPayload(&packet->payload, payloadBinary)) {
+        if (*fragmentNumber == *fragmentCount) {
+            // This fragment is complete.
+            *fragmentNumber = 0;
+            *fragmentCount = 0;
+            return 1;
+        }
+    }
+    else {
+        fprintf(stderr, "Failed to decode packet payload! Skipping packet.\n");
+        *fragmentNumber = 0;
+        *fragmentCount = 0;
+    }
+    return 0;
 }
 
 int decode(FILE* input, enum PrintOption printing) {
     char data[1024];
     int dataLength = 0;
+    struct EncodedData payloadBinary = {0};
+    int fragmentCount = 0, fragmentNumber = 0;
     for (;;) {
         dataLength += fread(data, 1, sizeof(data) - dataLength, input);
         if (dataLength == 0) {
@@ -65,12 +97,15 @@ int decode(FILE* input, enum PrintOption printing) {
             if (printing == PACKET_XML) {
                 printXmlPacket(&packet, 0, "packet");
             }
-            BitBuffer binary = {0};
-            if (getBinaryPayload(&packet.payload, &binary)) {
-                unsigned char* allocatedBuffer = binary.buffer;
-                binary.num_bits -= packet.numFillBits;
+            if (updatePayload(&fragmentNumber, &fragmentCount, &packet,
+                        &payloadBinary)) {
+                BitBuffer messageBuffer = {
+                    (unsigned char*)payloadBinary.buffer, 0,
+                    payloadBinary.num_bits - packet.numFillBits};
+                payloadBinary.num_bits = 0;
+
                 struct Message message;
-                if (decodeMessage(&binary, &message)) {
+                if (decodeMessage(&messageBuffer, &message)) {
                     if (printing == MESSAGE_XML) {
                         printXmlMessage(&message, 0, "message");
                     }
@@ -79,10 +114,6 @@ int decode(FILE* input, enum PrintOption printing) {
                 else {
                     fprintf(stderr, "Failed to decode payload message! Skipping packet.\n");
                 }
-                free(allocatedBuffer);
-            }
-            else {
-                fprintf(stderr, "Failed to decode packet payload! Skipping packet.\n");
             }
 
             freePacket(&packet);
@@ -101,6 +132,7 @@ int decode(FILE* input, enum PrintOption printing) {
         dataLength -= (char*)buffer.buffer - data;
         memcpy(data, buffer.buffer, dataLength);
     }
+    free(payloadBinary.buffer);
     return 1;
 }
 
