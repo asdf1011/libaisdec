@@ -83,6 +83,7 @@ int decode(FILE* input, enum PrintOption printing) {
     int dataLength = 0;
     struct EncodedData payloadBinary = {0};
     int fragmentCount = 0, fragmentNumber = 0;
+    int lineNumber = 1;
     for (;;) {
         dataLength += fread(&data[dataLength], 1, sizeof(data) - dataLength, input);
         if (dataLength == 0) {
@@ -112,14 +113,14 @@ int decode(FILE* input, enum PrintOption printing) {
                     freeMessage(&message);
                 }
                 else {
-                    fprintf(stderr, "Failed to decode payload message! Skipping packet.\n");
+                    fprintf(stderr, "Failed to decode payload message at line %i!\n", lineNumber);
                 }
             }
 
             freePacket(&packet);
         }
         else {
-            fprintf(stderr, "Failed to decode packet! Skipping.\n");
+            fprintf(stderr, "Failed to decode packet at line %i!\n", lineNumber);
             char* next = memchr(data, '\n', dataLength);
             if (next == 0) {
                 /* No more packets. */
@@ -129,7 +130,18 @@ int decode(FILE* input, enum PrintOption printing) {
         }
 
         /* Move the data still to decode to the start of the buffer. */
-        dataLength -= (char*)buffer.buffer - data;
+        int bytesConsumed = (char*)buffer.buffer - data;
+        dataLength -= bytesConsumed;
+        if (data[bytesConsumed - 1] != '\n') {
+            fprintf(stderr, "Packet at line %i didn't end in a new line character!\n", lineNumber);
+        }
+        int i;
+        for (i = 0; i < bytesConsumed; ++i) {
+            if (data[i] == '\n') {
+                ++lineNumber;
+            }
+        }
+        
         memmove(data, buffer.buffer, dataLength);
     }
     free(payloadBinary.buffer);
