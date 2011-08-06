@@ -146,6 +146,10 @@ int main(int argc, char* argv[]) {
     else {
         for (; i < argc; ++i) {
             FILE* datafile = fopen(argv[i], "rb");
+            if (datafile == 0) {
+                fprintf(stderr, "Failed to open '%s': %s\n", argv[i], strerror(errno));
+                return EXIT_FAILURE;
+            }
             if (!decode(datafile, printing)) {
                 fclose(datafile);
                 return EXIT_FAILURE;
