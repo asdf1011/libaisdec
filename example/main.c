@@ -84,7 +84,7 @@ int decode(FILE* input, enum PrintOption printing) {
     struct EncodedData payloadBinary = {0};
     int fragmentCount = 0, fragmentNumber = 0;
     for (;;) {
-        dataLength += fread(data, 1, sizeof(data) - dataLength, input);
+        dataLength += fread(&data[dataLength], 1, sizeof(data) - dataLength, input);
         if (dataLength == 0) {
             break;
         }
@@ -130,7 +130,7 @@ int decode(FILE* input, enum PrintOption printing) {
 
         /* Move the data still to decode to the start of the buffer. */
         dataLength -= (char*)buffer.buffer - data;
-        memcpy(data, buffer.buffer, dataLength);
+        memmove(data, buffer.buffer, dataLength);
     }
     free(payloadBinary.buffer);
     return 1;
