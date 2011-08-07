@@ -58,6 +58,17 @@ class Decoder:
             else:
                 yield is_starting, name, entry, data, value
 
+    def _get_crc(self, data):
+        result = 0
+        data = data.copy()
+        # Skip the leading '!'
+        data.pop(8)
+        while True:
+            char = data.pop(8)
+            if int(char) == ord('*'):
+                return result
+            result ^= int(char)
+
     def decode(self, input_file):
         # Encode aivdm data back into binary
         fragments = []
@@ -65,7 +76,14 @@ class Decoder:
         data = Data(input_file)
         while data:
             try:
+                calculated_crc = self._get_crc(data)
                 packet = decode(self._aivdm[0], data)
+                if packet.checksum != calculated_crc:
+                    sys.stderr.write('Crc mismatch; expected %02X, but '
+                            'calculated %02X. Skipping packet.\n' %
+                            (packet.checksum, calculated_crc))
+                    continue
+
                 bits = encode(payload, list(ord(c.character) for c in packet.payload))
                 bits = bits.pop(len(bits) - packet.num_fill_bits)
                 if len(fragments) == packet.fragment_number - 1:

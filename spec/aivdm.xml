@@ -24,7 +24,10 @@
         </sequenceof>
         <reference name="num fill bits" type="digit" />
         <field type="text" length="8" value="*" />
-        <field name="checksum" type="text" length="16" />
+        <sequence name="checksum" value="${value 1:} * 16 + ${value 2:}">
+            <reference name="value 1:" type="hex digit:" />
+            <reference name="value 2:" type="hex digit:" />
+        </sequence>
         <sequenceof name="spurious data">
             <choice name="character">
                 <field name="eol:" type="text" length="8" value="0xa" ><end-sequenceof /></field>
@@ -45,6 +48,17 @@
                 </choice>
             </sequence>
         </sequenceof>
+
+        <choice name="hex digit:">
+            <reference name="digit" />
+            <sequence name="lowercase" value="${character} - 87">
+                <field name="character" length="8" min="97" max="102" />
+            </sequence>
+            <sequence name="uppercase" value="${character} - 55">
+                <field name="character" length="8" min="65" max="70" />
+            </sequence>
+        </choice>
+
 
         <sequence name="digit" value="${digit:} - 48">
             <field name="digit:" length="8" min="48" max="57" />
