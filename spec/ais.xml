@@ -21,6 +21,7 @@
         <reference name="group assignment command" />
         <reference name="static data report part a" />
         <reference name="static data report part b" />
+        <reference name="single slot binary message" />
         <reference name="unknown message" />
     </choice> 
 

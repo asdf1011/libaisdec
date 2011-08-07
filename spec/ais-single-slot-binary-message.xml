@@ -1,0 +1,41 @@
+<protocol>
+    <common>
+        <sequence name="single slot binary message">
+            <field length="6" type="integer" value="25" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="has destination:" length="1" />
+            <field name="has application identifier:" length="1" />
+            <reference name="destination id" type="mmsi" if="${has destination:} == 1" />
+            <choice name="binary data">
+                <sequence name="application binary data">
+                    <sequence value="${has application identifier:}" expected="1" />
+                    <reference name="application data" />
+                </sequence>
+                <sequence name="unstructured binary data">
+                    <sequence value="${has application identifier:}" expected="0" />
+                    <!-- This is a bit nasty, but I'll assume the application
+                         data is a multiple of whole bytes. -->
+                    <sequenceof name="data">
+                        <sequence name="byte" value="${value:}">
+                            <field name="value:" length="8" type="integer" />
+                            <choice name="is end:">
+                                <sequence>
+                                    <!-- If there isn't enough data for a whole
+                                         byte, stop the sequenceof. -->
+                                    <choice name="test data:">
+                                        <field length="8" />
+                                        <sequence />
+                                    </choice>
+                                    <sequence value="len{test data:}" expected="0" />
+                                    <end-sequenceof />
+                                </sequence>
+                                <sequence />
+                            </choice>
+                        </sequence>
+                    </sequenceof>
+                </sequence>
+            </choice>
+        </sequence>
+    </common>
+</protocol>
