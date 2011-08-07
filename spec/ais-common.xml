@@ -29,12 +29,20 @@
                     </choice>
                     <field name="value:" length="14" type="integer" max="2249" />
                 </sequence>
-                <sequence name="UTC hour and minute">
-                    <sequence value="${slot time out}" expected="1" />
-                    <field name="hour" length="5" type="integer" max="23" />
-                    <field name="minute" length="7" type="integer" max="59" />
-                    <field length="2" />
-                </sequence>
+                <choice name="UTC hour and minute">
+                    <sequence name="UTC hour and minute">
+                        <sequence value="${slot time out}" expected="1" />
+                        <field name="hour" length="5" type="integer" max="23" />
+                        <field name="minute" length="7" type="integer" max="59" />
+                        <field length="2" />
+                    </sequence>
+                    <sequence name="time not available">
+                        <sequence value="${slot time out}" expected="1" />
+                        <field name="hour:" length="5" type="integer" value="24" />
+                        <field name="minute:" length="7" type="integer" value="60" />
+                        <field length="2" />
+                    </sequence>
+                </choice>
                 <choice name="slot offset">
                     <sequence name="de-allocated after transmission">
                         <sequence value="${slot time out}" expected="0" />
