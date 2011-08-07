@@ -97,7 +97,7 @@ class Decoder:
 def main(args):
     try:
         opts, args = getopt.getopt(args[1:], 'h', [])
-    except getopt.GetOptError, ex:
+    except getopt.GetoptError, ex:
         sys.exit(ex)
 
     for opt, value in opts:
