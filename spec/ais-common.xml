@@ -177,7 +177,7 @@
                 <reference name="modifier" type="type of ship modifier" />
             </sequence>
             <sequence name="other types of ships">
-                <field name="digit:" length="8" type="integer" min="80" max="89" />
+                <field name="digit:" length="8" type="integer" min="90" max="99" />
                 <reference name="modifier" type="type of ship modifier" />
             </sequence>
             <field name="reserved for regional used" length="8" type="integer" min="100" max="199" />

@@ -1,0 +1,33 @@
+<ship-static-and-voyage-related-data>
+    <repeat-indicator>0</repeat-indicator>
+    <user-id>10101001</user-id>
+    <compliant-with-ITU-R-M.1371-1></compliant-with-ITU-R-M.1371-1>
+    <not-available></not-available>
+    <call-sign>
+        <value>@@@@@@@</value>
+    </call-sign>
+    <name>
+        <value>MORAN DISPATCH      </value>
+    </name>
+    <other-types-of-ships>
+        <All-ships-of-this-type></All-ships-of-this-type>
+    </other-types-of-ships>
+    <dimensions-of-ship>
+        <a>0</a>
+        <b>0</b>
+        <c>0</c>
+        <d>0</d>
+    </dimensions-of-ship>
+    <global-positioning-system-_GPS_></global-positioning-system-_GPS_>
+    <estimated-time-of-arrival>
+        <not-available></not-available>
+        <not-available></not-available>
+        <not-available></not-available>
+        <not-available></not-available>
+    </estimated-time-of-arrival>
+    <not-available></not-available>
+    <destination>
+        <value>@@@@@@@@@@@@@@@@@@@@</value>
+    </destination>
+    <available></available>
+</ship-static-and-voyage-related-data>
