@@ -1,7 +1,56 @@
-<binary-broadcast-message>
+<meteorlogical-and-hydrological-data>
     <repeat-indicator>0</repeat-indicator>
     <source-id>338040883</source-id>
-    <unknown-international-operational-application>
-        <function-identifier>11</function-identifier>
-    </unknown-international-operational-application>
-</binary-broadcast-message>
+    <latitude-in-1_1000-minute>2588160</latitude-in-1_1000-minute>
+    <longitude-in-1_1000-minute>-4256356</longitude-in-1_1000-minute>
+    <time-of-transmission>
+        <day>30</day>
+        <hour>14</hour>
+        <minute>24</minute>
+    </time-of-transmission>
+    <average-wind-speed>2</average-wind-speed>
+    <maximum-gust-speed>5</maximum-gust-speed>
+    <wind-direction>133</wind-direction>
+    <wind-gust-direction>96</wind-gust-direction>
+    <air-temperature-1_10-degrees>68</air-temperature-1_10-degrees>
+    <relative-humidity>70</relative-humidity>
+    <dew-point-1_10-degrees>8</dew-point-1_10-degrees>
+    <air-pressure>210</air-pressure>
+    <increasing></increasing>
+    <horizontal-visibility-1_10-nm>0</horizontal-visibility-1_10-nm>
+    <water-level-1_10-m>0</water-level-1_10-m>
+    <increasing></increasing>
+    <surface-current>
+        <speed-1_10-kt>0</speed-1_10-kt>
+        <direction>0</direction>
+    </surface-current>
+    <current-2>
+        <current>
+            <speed-1_10-kt>0</speed-1_10-kt>
+            <direction>0</direction>
+        </current>
+        <depth-m>0</depth-m>
+    </current-2>
+    <current-3>
+        <current>
+            <speed-1_10-kt>0</speed-1_10-kt>
+            <direction>0</direction>
+        </current>
+        <depth-m>0</depth-m>
+    </current-3>
+    <significant-wave>
+        <height-1_10-m>0</height-1_10-m>
+        <period-seconds>0</period-seconds>
+        <direction>0</direction>
+    </significant-wave>
+    <swell>
+        <height-1_10-m>0</height-1_10-m>
+        <period-seconds>0</period-seconds>
+        <direction>0</direction>
+    </swell>
+    <sea-state>0</sea-state>
+    <water-temperature-1_10-degree>568</water-temperature-1_10-degree>
+    <precipitation>0</precipitation>
+    <salinity-1_10-percent>0</salinity-1_10-percent>
+    <ice>0</ice>
+</meteorlogical-and-hydrological-data>

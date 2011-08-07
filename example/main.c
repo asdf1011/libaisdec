@@ -118,7 +118,9 @@ int decode(FILE* input, enum PrintOption printing, int shouldLogVerbose) {
                             appData = &message.value.addressedBinaryMessage.applicationData;
                             break;
                         case BINARY_BROADCAST_MESSAGE:
-                            appData = &message.value.binaryBroadcastMessage.applicationData;
+                            if (message.value.binaryBroadcastMessage.option == UNKNOWN_BROADCAST_MESSAGE) {
+                                appData = &message.value.binaryBroadcastMessage.value.unknownBroadcastMessage.applicationData;
+                            }
                             break;
                         case UNKNOWN_MESSAGE:
                             fprintf(stderr, "Unknown message type-%02i at line %i!\n",

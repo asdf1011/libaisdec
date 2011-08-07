@@ -22,7 +22,7 @@ $(libaivdm) : ../spec/aivdm.xml
 	 bcompile --encoder -d $(aivdm_dir) ../spec/aivdm.xml
 	 cd $(aivdm_dir) && $(MAKE)
 
-$(libais) : ../spec/ais.xml
+$(libais) : ../spec/ais-*.xml
 	 mkdir -p $(ais_dir)
 	 bcompile -d $(ais_dir) ../spec/ais*.xml
 	 cd $(ais_dir) && $(MAKE)

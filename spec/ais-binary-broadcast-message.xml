@@ -1,6 +1,11 @@
 <protocol>
     <common>
-        <sequence name="binary broadcast message">
+        <choice name="binary broadcast message">
+            <reference name="meteorlogical and hydrological data" />
+            <reference name="unknown broadcast message" />
+        </choice>
+
+        <sequence name="unknown broadcast message">
             <field length="6" type="integer" value="8" />
             <field name="repeat indicator" length="2" type="integer" />
             <reference name="source id" type="mmsi" />
@@ -8,5 +13,70 @@
             <reference name="application data" />
         </sequence>
 
+        <sequence name="meteorlogical and hydrological data" length="352" >
+            <field length="6" type="integer" value="8" />
+            <field name="repeat indicator" length="2" type="integer" />
+            <reference name="source id" type="mmsi" />
+            <field name="spare:" length="2" value="0x0" />
+            <field name="dac:" length="10" type="integer" value="1" />
+            <field name="function identifier:" length="6" type="integer" value="11" />
+            <field name="latitude in 1/1000 minute" length="24" type="signed integer" />
+            <field name="longitude in 1/1000 minute" length="25" type="signed integer" />
+            <sequence name="time of transmission">
+                <field name="day" length="5" type="integer" max="31" />
+                <field name="hour" length="5" type="integer" max="23" />
+                <field name="minute" length="6" type="integer" max="59" />
+            </sequence>
+            <field name="average wind speed" length="7" type="integer" />
+            <field name="maximum gust speed" length="7" type="integer" />
+            <reference name="wind direction" type="direction" />
+            <reference name="wind gust direction" type="direction" />
+            <field name="air temperature 1/10 degrees" length="11" type="signed integer" />
+            <field name="relative humidity" length="7" type="integer" max="100" />
+            <!-- FIXME: How is this encoded? signed? or '-200 + value'? -->
+            <field name="dew point 1/10 degrees" length="10" type="signed integer" />
+            <field name="air pressure" length="9" type="integer" />
+            <reference name="air pressure tendency" type="trend" />
+            <field name="horizontal visibility 1/10 nm" length="8" type="integer" max="250" />
+            <!-- FIXME: How is this encoded? signed? or '-100 + value'? -->
+            <field name="water level 1/10 m" length="9" type="signed integer" min="-100" max="300" />
+            <reference name="water level trend" type="trend" />
+            <reference name="surface current" type="current" />
+            <reference name="current 2" type="sub surface current" />
+            <reference name="current 3" type="sub surface current" />
+            <reference name="significant wave" type="wave details" />
+            <reference name="swell" type="wave details" />
+            <field name="sea state" length="4" type="integer" />
+            <!-- FIXME: How is this encoded? signed? offset to -20? -->
+            <field name="water temperature 1/10 degree" length="10" type="integer" />
+            <field name="precipitation" length="3" type="integer" />
+            <field name="salinity 1/10 percent" length="9" type="integer" max="500" />
+            <field name="ice" length="2" type="integer" />
+            <field name="spare:" length="6" />
+        </sequence>
+
+        <sequence name="wave details">
+            <field name="height 1/10 m" length="8" type="integer" />
+            <field name="period seconds" length="6" type="integer" />
+            <field name="direction" length="9" type="integer" max="359" />
+        </sequence>
+
+        <sequence name="current">
+            <field name="speed 1/10 kt" length="8" type="integer" max="250" />
+            <reference name="direction" type="direction" />
+        </sequence>
+
+        <sequence name="sub surface current">
+            <reference type="current" />
+            <field name="depth m" type="integer" length="5" />
+        </sequence>
+
+        <field name="direction" length="9" type="integer" min="0" max="359" />
+
+        <choice name="trend">
+            <field name="steady" length="2" value="0x0" />
+            <field name="decreasing" length="2" value="0x1" />
+            <field name="increasing" length="2" value="0x2" />
+        </choice>
     </common>
 </protocol>
