@@ -79,6 +79,62 @@ int updatePayload(int *fragmentNumber, int *fragmentCount,
     return 0;
 }
 
+int getCrc(const char* data, int dataLength) {
+    int result = 0;
+    int i;
+    for (i = 1; i < dataLength; ++i) {
+        if (data[i] == '*') {
+            return result;
+        }
+        result ^= data[i];
+    }
+    fprintf(stderr, "Failed to find '*' when calculating crc!\n");
+    return -1;
+}
+
+void printMesage(BitBuffer* messageBuffer, enum PrintOption printing,
+        int shouldLogVerbose, int lineNumber) {
+
+    struct Message message;
+    if (decodeMessage(messageBuffer, &message)) {
+        if (printing == MESSAGE_XML) {
+            printXmlMessage(&message, 0, "message");
+        }
+        if (shouldLogVerbose) {
+            const struct ApplicationData* appData = 0;
+            switch (message.option) {
+            case ADDRESSED_BINARY_MESSAGE:
+                appData = &message.value.addressedBinaryMessage.applicationData;
+                break;
+            case BINARY_BROADCAST_MESSAGE:
+                if (message.value.binaryBroadcastMessage.option == UNKNOWN_BROADCAST_MESSAGE) {
+                    appData = &message.value.binaryBroadcastMessage.value.unknownBroadcastMessage.applicationData;
+                }
+                break;
+            case UNKNOWN_MESSAGE:
+                fprintf(stderr, "Unknown message type-%02i at line %i!\n",
+                       message.value.unknownMessage.type, lineNumber);
+                break;
+            default:
+                break;
+            }
+            if (appData != 0) {
+                if (appData->option == UNKNOWN_APPLICATION_IDENTIFIER) {
+                    const struct UnknownApplicationIdentifier *id =
+                        &appData->value.unknownApplicationIdentifier;
+                    fprintf(stderr, "Unknown application data "
+                            "(dac=%i, fid=%i) at line %i\n", id->dac,
+                            id->functionIdentifier, lineNumber);
+                }
+            }
+        }
+        freeMessage(&message);
+    }
+    else {
+        fprintf(stderr, "Failed to decode payload message at line %i!\n", lineNumber);
+    }
+}
+
 int decode(FILE* input, enum PrintOption printing, int shouldLogVerbose) {
     char data[1024];
     int dataLength = 0;
@@ -95,55 +151,24 @@ int decode(FILE* input, enum PrintOption printing, int shouldLogVerbose) {
         BitBuffer buffer = {(unsigned char*)data, 0, dataLength * 8};
         struct Packet packet;
         if (decodePacket(&buffer, &packet)) {
-            /* Print the decoded data */
-            if (printing == PACKET_XML) {
-                printXmlPacket(&packet, 0, "packet");
+            if (getCrc(data, dataLength) == packet.checksum) {
+                if (printing == PACKET_XML) {
+                    printXmlPacket(&packet, 0, "packet");
+                }
+                if (updatePayload(&fragmentNumber, &fragmentCount, &packet,
+                            &payloadBinary)) {
+                    BitBuffer messageBuffer = {
+                        (unsigned char*)payloadBinary.buffer, 0,
+                        payloadBinary.num_bits - packet.numFillBits};
+                    payloadBinary.num_bits = 0;
+                    printMesage(&messageBuffer, printing, shouldLogVerbose,
+                            lineNumber);
+                }
             }
-            if (updatePayload(&fragmentNumber, &fragmentCount, &packet,
-                        &payloadBinary)) {
-                BitBuffer messageBuffer = {
-                    (unsigned char*)payloadBinary.buffer, 0,
-                    payloadBinary.num_bits - packet.numFillBits};
-                payloadBinary.num_bits = 0;
-
-                struct Message message;
-                if (decodeMessage(&messageBuffer, &message)) {
-                    if (printing == MESSAGE_XML) {
-                        printXmlMessage(&message, 0, "message");
-                    }
-                    if (shouldLogVerbose) {
-                        const struct ApplicationData* appData = 0;
-                        switch (message.option) {
-                        case ADDRESSED_BINARY_MESSAGE:
-                            appData = &message.value.addressedBinaryMessage.applicationData;
-                            break;
-                        case BINARY_BROADCAST_MESSAGE:
-                            if (message.value.binaryBroadcastMessage.option == UNKNOWN_BROADCAST_MESSAGE) {
-                                appData = &message.value.binaryBroadcastMessage.value.unknownBroadcastMessage.applicationData;
-                            }
-                            break;
-                        case UNKNOWN_MESSAGE:
-                            fprintf(stderr, "Unknown message type-%02i at line %i!\n",
-                                   message.value.unknownMessage.type, lineNumber);
-                            break;
-                        default:
-                            break;
-                        }
-                        if (appData != 0) {
-                            if (appData->option == UNKNOWN_APPLICATION_IDENTIFIER) {
-                                const struct UnknownApplicationIdentifier *id =
-                                    &appData->value.unknownApplicationIdentifier;
-                                fprintf(stderr, "Unknown application data "
-                                        "(dac=%i, fid=%i) at line %i\n", id->dac,
-                                        id->functionIdentifier, lineNumber);
-                            }
-                        }
-                    }
-                    freeMessage(&message);
-                }
-                else {
-                    fprintf(stderr, "Failed to decode payload message at line %i!\n", lineNumber);
-                }
+            else {
+                fprintf(stderr, "Bad packet checksum; expected %i but "
+                        "calculated %i at line %i!\n", packet.checksum,
+                        getCrc(data, dataLength), lineNumber);
             }
 
             freePacket(&packet);
