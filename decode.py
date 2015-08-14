@@ -14,7 +14,7 @@ import sys
 
 def usage(program):
     print 'Decode aivdm encoded ais files.'
-    print 'Usage: %s [options] <filename.aivdm> ...'
+    print 'Usage: %s [options] <filename.aivdm> ...' % program
     print
     print 'Options:'
     print '  -h    Show this help.'
@@ -112,15 +112,15 @@ class Decoder:
             filename, line_number, column_number = self._ais[2][ex.entry]
             sys.stderr.write('%s[%i] - %s\n' %  (filename, line_number, ex))
 
-def main(args):
+def main(argv):
     try:
-        opts, args = getopt.getopt(args[1:], 'h', [])
+        opts, args = getopt.getopt(argv[1:], 'h', [])
     except getopt.GetoptError, ex:
         sys.exit(ex)
 
     for opt, value in opts:
         if opt == '-h':
-            usage(args[0])
+            usage(argv[0])
             return 0
         else:
             raise NotImplementedError(opt)
